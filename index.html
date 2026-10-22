@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nadil Havindu | Owner @ CeylonEsports MC & Developer</title>
+    <title>Nexiz_v2 | Minecraft Server Architect & Network Owner</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -27,19 +27,20 @@
 
     <!-- Navigation Bar -->
     <header class="navbar" id="navbar">
-        <a href="#home" class="logo">
-            Nexiz_v2
-        </a>
+        <a href="#home" class="logo">Nexiz_v2</a>
         <nav class="nav-links">
             <a href="#home" class="nav-item active">Home</a>
+            <a href="#network-status" class="nav-item">Network Ops</a>
             <a href="#about" class="nav-item">About</a>
-            <a href="#network" class="nav-item">Network</a>
-            <a href="#skills" class="nav-item">Skills</a>
-            <a href="#projects" class="nav-item">Projects</a>
-            <a href="#contact" class="nav-item">Contact</a>
+            <a href="#skills" class="nav-item">Architecture</a>
+            <a href="#projects" class="nav-item">Infrastructure</a>
+            <a href="#contact" class="nav-item">Terminal / Contact</a>
         </nav>
         <div class="nav-actions">
-            <a href="#contact" class="btn btn-outline btn-sm">Get in Touch</a>
+            <div class="live-status-pill">
+                <span class="live-dot"></span>
+                <span>SYSTEM ONLINE</span>
+            </div>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
                 <i class="fa-solid fa-bars-staggered"></i>
             </button>
@@ -51,40 +52,51 @@
         <section class="hero" id="home">
             <div class="hero-container">
                 <div class="hero-content">
-
+                    <div class="terminal-prefix">&gt; sudo systemctl start nexiz-ops</div>
                     <h1 class="hero-title">
-                        Empowering Communities Through <br>
+                        Architecting Scalable <br>
                         <span class="gradient-text typing-text">Minecraft Server Development</span>
                     </h1>
                     <p class="hero-subtitle">
-                        Hi, I'm <strong class="text-white">Nadil Havindu</strong> — a passionate Minecraft Server Developer, Programmer, and Community Leader dedicated to architecting high-performance game servers, custom mechanics, and vibrant gaming networks.
+                        I am <strong class="text-white">Nadil Havindu</strong> (<span class="code-tag">Nexiz_v2</span>), Owner of <strong class="text-white">CeylonEsports Minecraft Network</strong>. Specializing in high-throughput network architectures, low-latency JVM optimization, custom game coding, and battle-hardened community moderation.
                     </p>
 
                     <div class="hero-cta">
-                        <a href="#network" class="btn btn-primary">
-                            <span>Explore Network</span>
-                            <i class="fa-solid fa-gamepad"></i>
+                        <a href="#network-status" class="btn btn-primary">
+                            <i class="fa-solid fa-server"></i>
+                            <span>Network Telemetry</span>
                         </a>
                         <a href="#contact" class="btn btn-glass">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            <span>Contact Me</span>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Admin Inquiry</span>
                         </a>
                     </div>
 
-                    <div class="hero-stats">
-                        <div class="stat-box">
-                            <h3>Owner</h3>
-                            <p>CeylonEsports MC</p>
+                    <!-- Telemetry Stats Strip -->
+                    <div class="telemetry-strip">
+                        <div class="telemetry-card">
+                            <div class="t-top">
+                                <span class="t-label">NETWORK TPS</span>
+                                <i class="fa-solid fa-gauge text-red"></i>
+                            </div>
+                            <div class="t-val text-white">20.0 <span class="unit">/ 20</span></div>
+                            <div class="t-sub">Zero Tick Loss</div>
                         </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-box">
-                            <h3>Server Dev</h3>
-                            <p>Optimization & Plugins</p>
+                        <div class="telemetry-card">
+                            <div class="t-top">
+                                <span class="t-label">SERVER CORES</span>
+                                <i class="fa-solid fa-microchip text-red"></i>
+                            </div>
+                            <div class="t-val text-white">Purpur & Velocity</div>
+                            <div class="t-sub">Multi-Proxy Cluster</div>
                         </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-box">
-                            <h3>Leader</h3>
-                            <p>Network Moderation</p>
+                        <div class="telemetry-card">
+                            <div class="t-top">
+                                <span class="t-label">MODERATION</span>
+                                <i class="fa-solid fa-shield-cat text-red"></i>
+                            </div>
+                            <div class="t-val text-white">Active Anti-Cheat</div>
+                            <div class="t-sub">24/7 Threat Mitigation</div>
                         </div>
                     </div>
                 </div>
@@ -92,25 +104,75 @@
                 <div class="hero-visual">
                     <div class="code-terminal">
                         <div class="terminal-header">
-                            <span class="terminal-btn close"></span>
-                            <span class="terminal-btn min"></span>
-                            <span class="terminal-btn max"></span>
-                            <span class="terminal-title">server@ceylonesports: ~</span>
+                            <div class="terminal-dots">
+                                <span class="terminal-btn close"></span>
+                                <span class="terminal-btn min"></span>
+                                <span class="terminal-btn max"></span>
+                            </div>
+                            <span class="terminal-title">root@ceylonesports-proxy:~# ./monitor</span>
+                            <span class="badge-status">LIVE MONITOR</span>
                         </div>
                         <div class="terminal-body">
-                            <p class="code-line"><span class="code-kw">const</span> <span class="code-var">serverOwner</span> = {</p>
-                            <p class="code-line indent-1"><span class="code-prop">name</span>: <span class="code-str">'Nadil Havindu'</span>,</p>
-                            <p class="code-line indent-1"><span class="code-prop">role</span>: <span class="code-str">'Owner @ CeylonEsports MC'</span>,</p>
-                            <p class="code-line indent-1"><span class="code-prop">specialties</span>: [</p>
-                            <p class="code-line indent-1"><span class="code-str">'  Minecraft Server Development'</span>,</p>
-                            <p class="code-line indent-1"><span class="code-str">'  Coding & Scripting'</span>,</p>
-                            <p class="code-line indent-1"><span class="code-str">'  Community Moderation & Management'</span></p>
-                            <p class="code-line indent-1">],</p>
-                            <p class="code-line indent-1"><span class="code-prop">serverStatus</span>: <span class="code-str">'Online 24/7'</span>,</p>
-                            <p class="code-line indent-1"><span class="code-prop">passionate</span>: <span class="code-bool">true</span></p>
-                            <p class="code-line">};</p>
-                            <p class="code-line prompt-line"><span class="code-prompt">➜</span> <span class="code-comment">// CeylonEsports Network running...</span><span class="blinking-cursor">_</span></p>
+                            <p class="code-line"><span class="code-comment"># Initializing CeylonEsports Core Nodes...</span></p>
+                            <p class="code-line"><span class="code-kw">[CORE]</span> <span class="code-var">Network:</span> <span class="code-str">CeylonEsports Minecraft Network</span></p>
+                            <p class="code-line"><span class="code-kw">[ADMIN]</span> <span class="code-var">Owner:</span> <span class="code-str">Nadil Havindu (Nexiz_v2)</span></p>
+                            <p class="code-line"><span class="code-kw">[PROXY]</span> Velocity Cluster: <span class="code-bool">CONNECTED (Port 25565)</span></p>
+                            <p class="code-line"><span class="code-kw">[SECURITY]</span> Exploit Guard: <span class="code-str">ACTIVE</span></p>
+                            <p class="code-line"><span class="code-kw">[FIREWALL]</span> DDoS Shielding & Packet Filtering: <span class="code-bool">ENABLED</span></p>
+                            <p class="code-line"><span class="code-kw">[STAFF]</span> Incident Moderation Response: <span class="code-str">&lt; 3 mins</span></p>
+                            <p class="code-line prompt-line"><span class="code-prompt">nexiz@datacenter:~$</span> <span class="code-cmd">watch --interval 1 server_tps</span><span class="blinking-cursor">_</span></p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Network Telemetry / Operations Dashboard -->
+        <section class="section network-status" id="network-status">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fa-solid fa-satellite-dish"></i> Operations</span>
+                    <h2 class="section-title">Network Infrastructure & <span>Live Ops</span></h2>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-panel">
+                        <div class="panel-head">
+                            <h4><i class="fa-solid fa-network-wired text-red"></i> Topology & Routing</h4>
+                            <span class="pill-green">ONLINE</span>
+                        </div>
+                        <p class="panel-desc">Advanced proxy load-balancing routing players between Survival, Practice, Minigames, and Lobby nodes with ultra-low latency.</p>
+                        <div class="server-node-list">
+                            <div class="node-row">
+                                <span class="node-name"><i class="fa-solid fa-server"></i> Lobby Node-01</span>
+                                <span class="node-stat text-red">TPS: 20.0</span>
+                                <span class="node-ping">4ms</span>
+                            </div>
+                            <div class="node-row">
+                                <span class="node-name"><i class="fa-solid fa-gamepad"></i> Survival SMP Node</span>
+                                <span class="node-stat text-red">TPS: 19.98</span>
+                                <span class="node-ping">9ms</span>
+                            </div>
+                            <div class="node-row">
+                                <span class="node-name"><i class="fa-solid fa-swords"></i> PvP / Esports Arena</span>
+                                <span class="node-stat text-red">TPS: 20.0</span>
+                                <span class="node-ping">6ms</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel">
+                        <div class="panel-head">
+                            <h4><i class="fa-solid fa-shield-halved text-red"></i> Moderation & Security Protocol</h4>
+                            <span class="pill-red">ENFORCING</span>
+                        </div>
+                        <p class="panel-desc">Automated heuristics, player behavior analysis, anti-VPN detection, and Discord webhooks alert moderation team instantly.</p>
+                        <ul class="security-checklist">
+                            <li><i class="fa-solid fa-check text-red"></i> Enterprise ML Anti-Cheat behavioral checks</li>
+                            <li><i class="fa-solid fa-check text-red"></i> Packet exploit & dupe mitigation engine</li>
+                            <li><i class="fa-solid fa-check text-red"></i> Strict chat filtering, anti-toxicity & anti-spam</li>
+                            <li><i class="fa-solid fa-check text-red"></i> Role hierarchy & staff command auditing logs</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -120,39 +182,39 @@
         <section class="section about" id="about">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">About Me</span>
-                    <h2 class="section-title">Who is <span>Nadil Havindu?</span></h2>
+                    <span class="section-tag"><i class="fa-solid fa-terminal"></i> Bio</span>
+                    <h2 class="section-title">Behind the <span>Console</span></h2>
                 </div>
                 <div class="about-grid">
                     <div class="about-info-card">
-                        <h3>Gaming Network Owner, Server Architect & Developer</h3>
+                        <h3>Leading CeylonEsports Minecraft Network into Next-Gen Multiplayer</h3>
                         <p>
-                            I'm <strong class="text-white">Nadil Havindu</strong>, the Owner of <strong class="text-white">CeylonEsports Minecraft Network</strong>. My journey revolves around engineering smooth, lag-free multiplayer experiences, programming custom server behaviors, and nurturing safe, engaging player communities.
+                            Known in the community as <strong class="text-white">Nexiz_v2</strong>, I operate at the intersection of game systems engineering, code architecture, and community governance.
                         </p>
                         <p>
-                            With deep hands-on expertise in Minecraft server architectures, plugin configurations, coding, and team leadership, I manage both the technical infrastructure behind the scenes and the front-facing player experience.
+                            Managing a public gaming network isn't just about hosting files—it requires deep knowledge of JVM memory profiling, MySQL database synchronization, plugin architecture, staff hierarchy management, and player psychology.
                         </p>
                         
                         <div class="quick-facts">
                             <div class="fact-item">
                                 <i class="fa-solid fa-crown"></i>
                                 <div>
-                                    <span class="label">Organization</span>
+                                    <span class="label">Ownership</span>
                                     <strong>CeylonEsports Minecraft Network</strong>
                                 </div>
                             </div>
                             <div class="fact-item">
-                                <i class="fa-solid fa-server"></i>
+                                <i class="fa-solid fa-code-fork"></i>
                                 <div>
-                                    <span class="label">Core Specialization</span>
-                                    <strong>Minecraft Server Dev & Architecture</strong>
+                                    <span class="label">Engineering</span>
+                                    <strong>Paper / Purpur / Velocity Backend</strong>
                                 </div>
                             </div>
                             <div class="fact-item">
-                                <i class="fa-solid fa-users-gear"></i>
+                                <i class="fa-solid fa-user-shield"></i>
                                 <div>
-                                    <span class="label">Leadership</span>
-                                    <strong>Community & Staff Moderation</strong>
+                                    <span class="label">Moderation Head</span>
+                                    <strong>Zero-Tolerance Security & Fairness</strong>
                                 </div>
                             </div>
                         </div>
@@ -160,24 +222,24 @@
 
                     <div class="about-highlights">
                         <div class="highlight-card">
-                            <div class="highlight-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+                            <div class="highlight-icon"><i class="fa-solid fa-sliders"></i></div>
                             <div>
-                                <h4>Minecraft Server Engineering</h4>
-                                <p>Configuring paper/purpur spigot cores, tuning TPS, optimizing JVM arguments, and setting up BungeeCord/Velocity proxies.</p>
+                                <h4>Deep JVM & Engine Optimization</h4>
+                                <p>Aikar's flags tuning, chunk generation pre-caching, entity culling rules, and packet throttling to ensure flawless 20 TPS.</p>
                             </div>
                         </div>
                         <div class="highlight-card">
                             <div class="highlight-icon"><i class="fa-solid fa-code"></i></div>
                             <div>
-                                <h4>Coding & Custom Features</h4>
-                                <p>Crafting custom scripts, configuring plugins, integrating webhooks, and building interactive web tools.</p>
+                                <h4>Coding & Script Automation</h4>
+                                <p>Custom command scripts, webhook bots, automated restart routines, and SQL database linking across game modes.</p>
                             </div>
                         </div>
                         <div class="highlight-card">
-                            <div class="highlight-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="highlight-icon"><i class="fa-solid fa-gavel"></i></div>
                             <div>
-                                <h4>Moderation & Community Safety</h4>
-                                <p>Managing staff teams, anti-cheat detection, Discord community leadership, and fair server moderation policies.</p>
+                                <h4>Staff Command & Community Culture</h4>
+                                <p>Training staff moderators, formulating rule frameworks, dispute resolution, and building friendly gaming environments.</p>
                             </div>
                         </div>
                     </div>
@@ -185,49 +247,22 @@
             </div>
         </section>
 
-        <!-- Network Showcase Section -->
-        <section class="section network" id="network">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Featured Network</span>
-                    <h2 class="section-title">CeylonEsports <span>Minecraft Network</span></h2>
-                </div>
-
-                <div class="network-banner">
-                    <div class="network-badge"><i class="fa-solid fa-fire"></i> Flagship Project</div>
-                    <div class="network-info">
-                        <h3>Sri Lanka's Premier Gaming & Esports Community</h3>
-                        <p>
-                            As the Owner of CeylonEsports Minecraft Network, I oversee complete server infrastructure, network uptime, custom gameplay modes, event management, and competitive gameplay environments.
-                        </p>
-                        <div class="network-tags">
-                            <span>Multiplayer Network</span>
-                            <span>High Performance TPS</span>
-                            <span>Custom Economy</span>
-                            <span>Active Community</span>
-                            <span>Lag-Free Experience</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
+        <!-- Technical Capabilities Section -->
         <section class="section skills" id="skills">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Expertise</span>
-                    <h2 class="section-title">My Main <span>Skills</span></h2>
+                    <span class="section-tag"><i class="fa-solid fa-microchip"></i> Arsenal</span>
+                    <h2 class="section-title">Technical <span>Architecture</span></h2>
                 </div>
 
                 <div class="skills-categories">
-                    <!-- Category 1: Minecraft Dev & Moderation -->
+                    <!-- Column 1: Server Systems -->
                     <div class="skills-column">
-                        <h3 class="category-heading"><i class="fa-solid fa-cubes"></i> Server & Community</h3>
+                        <h3 class="category-heading"><i class="fa-solid fa-server"></i> Server Development & Ops</h3>
                         
                         <div class="skill-meter-card">
                             <div class="skill-info">
-                                <span><i class="fa-solid fa-server"></i> Minecraft Server Development</span>
+                                <span><i class="fa-solid fa-cube"></i> Purpur / Paper / Spigot Systems</span>
                                 <span class="pct">98%</span>
                             </div>
                             <div class="meter-bar"><div class="meter-fill" style="width: 98%"></div></div>
@@ -235,15 +270,15 @@
                         
                         <div class="skill-meter-card">
                             <div class="skill-info">
-                                <span><i class="fa-solid fa-shield-cat"></i> Community & Staff Moderation</span>
-                                <span class="pct">95%</span>
+                                <span><i class="fa-solid fa-route"></i> Velocity / BungeeCord Proxy Clustering</span>
+                                <span class="pct">94%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 95%"></div></div>
+                            <div class="meter-bar"><div class="meter-fill" style="width: 94%"></div></div>
                         </div>
 
                         <div class="skill-meter-card">
                             <div class="skill-info">
-                                <span><i class="fa-solid fa-gauge-high"></i> Performance & TPS Optimization</span>
+                                <span><i class="fa-solid fa-gauge-high"></i> TPS Diagnostics & Memory Garbage Collection</span>
                                 <span class="pct">92%</span>
                             </div>
                             <div class="meter-bar"><div class="meter-fill" style="width: 92%"></div></div>
@@ -251,20 +286,28 @@
 
                         <div class="skill-meter-card">
                             <div class="skill-info">
-                                <span><i class="fa-brands fa-discord"></i> Discord Community & Bot Management</span>
-                                <span class="pct">90%</span>
+                                <span><i class="fa-solid fa-file-code"></i> Plugin Ecosystems (LuckPerms, ItemsAdder, etc.)</span>
+                                <span class="pct">96%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 90%"></div></div>
+                            <div class="meter-bar"><div class="meter-fill" style="width: 96%"></div></div>
                         </div>
                     </div>
 
-                    <!-- Category 2: Coding & Web -->
+                    <!-- Column 2: Moderation & Coding -->
                     <div class="skills-column">
-                        <h3 class="category-heading"><i class="fa-solid fa-terminal"></i> Coding & Web Technologies</h3>
+                        <h3 class="category-heading"><i class="fa-solid fa-shield-halved"></i> Moderation & Programming</h3>
                         
                         <div class="skill-meter-card">
                             <div class="skill-info">
-                                <span><i class="fa-solid fa-code"></i> Coding & Scripting</span>
+                                <span><i class="fa-solid fa-shield-cat"></i> Staff Administration & Discord Governance</span>
+                                <span class="pct">95%</span>
+                            </div>
+                            <div class="meter-bar"><div class="meter-fill" style="width: 95%"></div></div>
+                        </div>
+
+                        <div class="skill-meter-card">
+                            <div class="skill-info">
+                                <span><i class="fa-solid fa-code"></i> Scripting, Webhooks & Logic Coding</span>
                                 <span class="pct">88%</span>
                             </div>
                             <div class="meter-bar"><div class="meter-fill" style="width: 88%"></div></div>
@@ -272,26 +315,18 @@
 
                         <div class="skill-meter-card">
                             <div class="skill-info">
-                                <span><i class="fa-brands fa-html5"></i> Web Development (HTML5 & CSS3)</span>
-                                <span class="pct">90%</span>
+                                <span><i class="fa-solid fa-database"></i> Database Architecture (MySQL / MariaDB)</span>
+                                <span class="pct">86%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 90%"></div></div>
+                            <div class="meter-bar"><div class="meter-fill" style="width: 86%"></div></div>
                         </div>
 
                         <div class="skill-meter-card">
                             <div class="skill-info">
-                                <span><i class="fa-brands fa-git-alt"></i> Git & GitHub Workflow</span>
-                                <span class="pct">85%</span>
+                                <span><i class="fa-solid fa-bug-slash"></i> Anti-Cheat Tuning & Exploit Prevention</span>
+                                <span class="pct">93%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 85%"></div></div>
-                        </div>
-
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
-                                <span><i class="fa-solid fa-sliders"></i> Plugin YAML / Config Architecture</span>
-                                <span class="pct">95%</span>
-                            </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 95%"></div></div>
+                            <div class="meter-bar"><div class="meter-fill" style="width: 93%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -302,29 +337,29 @@
         <section class="section projects" id="projects">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Creations</span>
-                    <h2 class="section-title">Projects & <span>Infrastructure</span></h2>
+                    <span class="section-tag"><i class="fa-solid fa-folder-closed"></i> Deployments</span>
+                    <h2 class="section-title">Featured <span>Infrastructure</span></h2>
                 </div>
 
                 <div class="projects-grid">
                     <!-- Project 1 -->
                     <div class="project-card featured">
-                        <div class="project-badge">Active Network</div>
+                        <div class="project-badge">ACTIVE PRODUCTION</div>
                         <div class="project-content">
-                            <div class="project-category">Gaming Network</div>
+                            <div class="project-category">Gaming Network Cluster</div>
                             <h3 class="project-title">CeylonEsports Minecraft Network</h3>
                             <p class="project-desc">
-                                Complete Minecraft server network management, server clustering, anti-cheat security, automated ranking systems, and staff administration.
+                                Sri Lanka's dedicated esports and community multiplayer environment. Equipped with automated rank syncing, custom GUI navigators, DDoS mitigation, and sub-second proxy dispatching.
                             </p>
                             <div class="tech-stack">
                                 <span>Purpur Spigot</span>
-                                <span>Velocity Proxy</span>
+                                <span>Velocity</span>
                                 <span>MySQL</span>
-                                <span>Anti-Cheat</span>
+                                <span>Advanced Anti-Cheat</span>
                             </div>
                             <div class="project-actions">
                                 <a href="#contact" class="btn btn-primary btn-sm">
-                                    <i class="fa-solid fa-circle-info"></i> Join Community
+                                    <i class="fa-solid fa-gamepad"></i> Access Network
                                 </a>
                             </div>
                         </div>
@@ -333,19 +368,18 @@
                     <!-- Project 2 -->
                     <div class="project-card">
                         <div class="project-content">
-                            <div class="project-category">Web Portal</div>
-                            <h3 class="project-title">Personal Developer Portfolio</h3>
+                            <div class="project-category">Security Protocol</div>
+                            <h3 class="project-title">Automated Moderation & Anti-Grief Engine</h3>
                             <p class="project-desc">
-                                Fast, responsive, dark-themed personal showcase built with pure HTML5, CSS3, and modern JavaScript, themed in Crimson Red and Pure White.
+                                Multi-layered protection matrix combining rollback systems, packet auditing, staff panic alerts, and webhook-based ban appeal pipelines.
                             </p>
                             <div class="tech-stack">
-                                <span>HTML5</span>
-                                <span>CSS3</span>
-                                <span>GitHub Pages</span>
+                                <span>CoreProtect</span>
+                                <span>DiscordSRV</span>
+                                <span>PacketEvents</span>
                             </div>
                             <div class="project-actions">
-                                <a href="https://github.com/nadilrself-art/My-Website1" target="_blank" class="btn btn-outline btn-sm"><i class="fa-brands fa-github"></i> Source</a>
-                                <a href="https://nadilrself-art.github.io/My-Website1/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                                <a href="#contact" class="btn btn-outline btn-sm"><i class="fa-solid fa-shield"></i> Security Specs</a>
                             </div>
                         </div>
                     </div>
@@ -353,18 +387,18 @@
                     <!-- Project 3 -->
                     <div class="project-card">
                         <div class="project-content">
-                            <div class="project-category">Server Systems</div>
-                            <h3 class="project-title">Custom Economy & Gameplay Tuning</h3>
+                            <div class="project-category">Web Portal</div>
+                            <h3 class="project-title">Nexiz_v2 Command Interface</h3>
                             <p class="project-desc">
-                                Custom configured economy balancing, quest chains, rank progressions, and custom GUI menus crafted for seamless player retention.
+                                High-speed developer portal designed with dark cybernetic aesthetic, interactive constellation physics, and real-time telemetry elements.
                             </p>
                             <div class="tech-stack">
-                                <span>Custom Menus</span>
-                                <span>Economy</span>
-                                <span>Permission Nodes</span>
+                                <span>HTML5</span>
+                                <span>CSS3 Canvas</span>
+                                <span>JavaScript ES6</span>
                             </div>
                             <div class="project-actions">
-                                <a href="#contact" class="btn btn-outline btn-sm"><i class="fa-solid fa-envelope"></i> Learn More</a>
+                                <a href="https://github.com/nadilrself-art/My-Website1" target="_blank" class="btn btn-outline btn-sm"><i class="fa-brands fa-github"></i> Repository</a>
                             </div>
                         </div>
                     </div>
@@ -377,10 +411,10 @@
             <div class="container">
                 <div class="contact-box">
                     <div class="section-header">
-                        <span class="section-tag">Connect</span>
-                        <h2 class="section-title">Get in Touch with <span>Nadil Havindu</span></h2>
+                        <span class="section-tag"><i class="fa-solid fa-terminal"></i> Ping</span>
+                        <h2 class="section-title">Open a Direct <span>Channel</span></h2>
                         <p class="contact-desc">
-                            Looking for Minecraft server development, server configuration, coding solutions, or community moderation? Let's connect!
+                            Available for Minecraft server architecture, plugin configuration, performance diagnostics, community moderation systems, or leadership consulting.
                         </p>
                     </div>
 
@@ -409,7 +443,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
-            <p>© 2026 <strong>Nadil Havindu</strong> — Owner @ CeylonEsports Minecraft Network</p>
+            <p>© 2026 <strong>Nexiz_v2 (Nadil Havindu)</strong> — Owner @ CeylonEsports Minecraft Network</p>
             <a href="#home" class="back-to-top" aria-label="Back to top">
                 <i class="fa-solid fa-arrow-up"></i>
             </a>
