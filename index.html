@@ -178,7 +178,7 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- About Section (With Tactical Photo Banners & Visual Pillars) -->
         <section class="section about" id="about">
             <div class="container">
                 <div class="section-header">
@@ -186,59 +186,89 @@
                     <h2 class="section-title">Behind the <span>Console</span></h2>
                 </div>
                 <div class="about-grid">
+                    <!-- Left: Bio Showcase Card with Server Ops Banner Photo -->
                     <div class="about-info-card">
-                        <h3>Leading CeylonEsports Minecraft Network into Next-Gen Multiplayer</h3>
-                        <p>
-                            Known in the community as <strong class="text-white">Nexiz_v2</strong>, I operate at the intersection of game systems engineering, code architecture, and community governance.
-                        </p>
-                        <p>
-                            Managing a public gaming network isn't just about hosting files—it requires deep knowledge of JVM memory profiling, MySQL database synchronization, plugin architecture, staff hierarchy management, and player psychology.
-                        </p>
-                        
-                        <div class="quick-facts">
-                            <div class="fact-item">
-                                <i class="fa-solid fa-crown"></i>
-                                <div>
-                                    <span class="label">Ownership</span>
-                                    <strong>CeylonEsports Minecraft Network</strong>
+                        <div class="about-card-banner">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Server Operations Infrastructure" class="about-banner-img">
+                            <div class="about-banner-overlay"></div>
+                            <span class="about-banner-badge"><i class="fa-solid fa-server text-red"></i> NETWORK INFRASTRUCTURE</span>
+                        </div>
+
+                        <div class="about-card-content">
+                            <h3>Leading CeylonEsports Minecraft Network into Next-Gen Multiplayer</h3>
+                            <p>
+                                Known in the community as <strong class="text-white">Nexiz_v2</strong>, I operate at the intersection of game systems engineering, code architecture, and community governance.
+                            </p>
+                            <p>
+                                Managing a public gaming network isn't just about hosting files—it requires deep knowledge of JVM memory profiling, MySQL database synchronization, plugin architecture, staff hierarchy management, and player psychology.
+                            </p>
+                            
+                            <div class="quick-facts">
+                                <div class="fact-item">
+                                    <i class="fa-solid fa-crown"></i>
+                                    <div>
+                                        <span class="label">Ownership</span>
+                                        <strong>CeylonEsports Minecraft Network</strong>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="fact-item">
-                                <i class="fa-solid fa-code-fork"></i>
-                                <div>
-                                    <span class="label">Engineering</span>
-                                    <strong>Paper / Purpur / Velocity Backend</strong>
+                                <div class="fact-item">
+                                    <i class="fa-solid fa-code-fork"></i>
+                                    <div>
+                                        <span class="label">Engineering</span>
+                                        <strong>Paper / Purpur / Velocity Backend</strong>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="fact-item">
-                                <i class="fa-solid fa-user-shield"></i>
-                                <div>
-                                    <span class="label">Moderation Head</span>
-                                    <strong>Zero-Tolerance Security & Fairness</strong>
+                                <div class="fact-item">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                    <div>
+                                        <span class="label">Moderation Head</span>
+                                        <strong>Zero-Tolerance Security & Fairness</strong>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Right: Visual Highlights with Mini Photo Thumbnails -->
                     <div class="about-highlights">
-                        <div class="highlight-card">
-                            <div class="highlight-icon"><i class="fa-solid fa-sliders"></i></div>
-                            <div>
-                                <h4>Deep JVM & Engine Optimization</h4>
+                        <!-- Highlight 1: Engine Optimization -->
+                        <div class="highlight-card with-thumb">
+                            <div class="highlight-thumb">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=300&q=80" alt="Hardware & JVM Optimization" class="thumb-img">
+                            </div>
+                            <div class="highlight-body">
+                                <div class="highlight-title-row">
+                                    <div class="highlight-icon"><i class="fa-solid fa-sliders"></i></div>
+                                    <h4>Deep JVM & Engine Optimization</h4>
+                                </div>
                                 <p>Aikar's flags tuning, chunk generation pre-caching, entity culling rules, and packet throttling to ensure flawless 20 TPS.</p>
                             </div>
                         </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon"><i class="fa-solid fa-code"></i></div>
-                            <div>
-                                <h4>Coding & Script Automation</h4>
+
+                        <!-- Highlight 2: Coding & Scripts -->
+                        <div class="highlight-card with-thumb">
+                            <div class="highlight-thumb">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=300&q=80" alt="Code & Automation" class="thumb-img">
+                            </div>
+                            <div class="highlight-body">
+                                <div class="highlight-title-row">
+                                    <div class="highlight-icon"><i class="fa-solid fa-code"></i></div>
+                                    <h4>Coding & Script Automation</h4>
+                                </div>
                                 <p>Custom command scripts, webhook bots, automated restart routines, and SQL database linking across game modes.</p>
                             </div>
                         </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon"><i class="fa-solid fa-gavel"></i></div>
-                            <div>
-                                <h4>Staff Command & Community Culture</h4>
+
+                        <!-- Highlight 3: Staff & Community -->
+                        <div class="highlight-card with-thumb">
+                            <div class="highlight-thumb">
+                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=300&q=80" alt="Esports Community & Moderation" class="thumb-img">
+                            </div>
+                            <div class="highlight-body">
+                                <div class="highlight-title-row">
+                                    <div class="highlight-icon"><i class="fa-solid fa-gavel"></i></div>
+                                    <h4>Staff Command & Community Culture</h4>
+                                </div>
                                 <p>Training staff moderators, formulating rule frameworks, dispute resolution, and building friendly gaming environments.</p>
                             </div>
                         </div>
