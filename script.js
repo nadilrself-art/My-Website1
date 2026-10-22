@@ -1,5 +1,5 @@
 // ==========================================================================
-// Interactive Portfolio Scripts
+// Interactive Portfolio Scripts - Nadil Havindu
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Typing effect for hero header subtitle
     const phrases = [
-        'Digital Experiences',
-        'Modern Web Apps',
-        'Intuitive UI/UX',
-        'Clean Architecture'
+        'Minecraft Server Development',
+        'Coding & Scripting Solutions',
+        'Staff & Community Moderation',
+        'CeylonEsports MC Network'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -81,15 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
             charIndex++;
         }
 
-        let typeSpeed = isDeleting ? 40 : 90;
+        let typeSpeed = isDeleting ? 35 : 80;
 
         if (!isDeleting && charIndex === currentPhrase.length) {
-            typeSpeed = 2200; // Pause at end of word
+            typeSpeed = 2000; // Pause at end of phrase
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 400; // Pause before typing next word
+            typeSpeed = 400; // Pause before typing next phrase
         }
 
         setTimeout(typeEffect, typeSpeed);
