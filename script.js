@@ -348,4 +348,106 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ═══════════════════════════════════════════════════════
+    // 6. Floating Binary / Hex / Dev Code Streams Background
+    // ═══════════════════════════════════════════════════════
+    const binaryLayer = document.getElementById('binaryLayer');
+    if (binaryLayer) {
+        const devChars = [
+            '0x2F', '0xFF', '01101', '10110', '11001', 'AUTH', 'DENY',
+            '3306', '25565', 'TPS', 'SSH', 'ACL', 'LOG', 'ERR',
+            'NET', 'MOD', 'BAN', 'GRD', 'PKT', '///', '>>',
+            '::1', '8080', 'DEV', 'JVM', 'SQL', 'ACK', 'SYN',
+            'KICK', 'MUTE', '/**', '{ }', '---', '>>>'
+        ];
+
+        const colCount = Math.floor(window.innerWidth / 60);
+
+        for (let c = 0; c < colCount; c++) {
+            if (Math.random() > 0.55) continue; // Only spawn some columns
+
+            const col = document.createElement('div');
+            col.className = 'binary-stream-col';
+            col.style.left = (c * 60 + Math.random() * 20) + 'px';
+
+            const duration = 10 + Math.random() * 18;
+            const delay = Math.random() * 20;
+            col.style.animationDuration = duration + 's';
+            col.style.animationDelay = delay + 's';
+
+            const charCount = 6 + Math.floor(Math.random() * 10);
+            for (let i = 0; i < charCount; i++) {
+                const span = document.createElement('span');
+                const txt = devChars[Math.floor(Math.random() * devChars.length)];
+                span.textContent = txt;
+
+                if (i === 0) {
+                    span.className = 'stream-char bright';
+                } else if (i < 3) {
+                    span.className = 'stream-char mid';
+                } else {
+                    span.className = 'stream-char dim';
+                }
+                col.appendChild(span);
+            }
+
+            binaryLayer.appendChild(col);
+        }
+
+        // Regenerate on resize
+        window.addEventListener('resize', () => {
+            binaryLayer.innerHTML = '';
+            const newColCount = Math.floor(window.innerWidth / 60);
+            for (let c = 0; c < newColCount; c++) {
+                if (Math.random() > 0.55) continue;
+                const col = document.createElement('div');
+                col.className = 'binary-stream-col';
+                col.style.left = (c * 60 + Math.random() * 20) + 'px';
+                const dur = 10 + Math.random() * 18;
+                const del = Math.random() * 15;
+                col.style.animationDuration = dur + 's';
+                col.style.animationDelay = del + 's';
+                const cc = 6 + Math.floor(Math.random() * 10);
+                for (let i = 0; i < cc; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = devChars[Math.floor(Math.random() * devChars.length)];
+                    span.className = i === 0 ? 'stream-char bright' : i < 3 ? 'stream-char mid' : 'stream-char dim';
+                    col.appendChild(span);
+                }
+                binaryLayer.appendChild(col);
+            }
+        });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // 7. Live Server Log Ticker
+    // ═══════════════════════════════════════════════════════
+    const tickerContent = document.getElementById('tickerContent');
+    if (tickerContent) {
+        const logs = [
+            { icon: 'fa-circle-check', cls: 'tick-ok', text: '[INFO] Velocity Proxy: All 3 sub-servers CONNECTED' },
+            { icon: 'fa-gauge-high', cls: '', text: '[TPS] Node-01 Lobby: 20.0 / 20.0 &nbsp; Node-02 SMP: 19.98' },
+            { icon: 'fa-shield-halved', cls: 'tick-ok', text: '[SECURITY] Anti-Cheat: 0 violations in last 5 minutes' },
+            { icon: 'fa-database', cls: '', text: '[DB] MySQL Connection Pool: 12/20 threads active' },
+            { icon: 'fa-user-shield', cls: 'tick-ok', text: '[MOD] Staff Online: 2 Senior Mods • 3 Helpers active' },
+            { icon: 'fa-triangle-exclamation', cls: 'tick-warn', text: '[WARN] Player throughput spike detected on Survival node' },
+            { icon: 'fa-circle-check', cls: 'tick-ok', text: '[GC] JVM Garbage Collection completed — Heap cleared' },
+            { icon: 'fa-ban', cls: '', text: '[MOD] ACTION: Player XxCheaterxX banned — Fly hacks detected' },
+            { icon: 'fa-code', cls: '', text: '[DEV] Nexiz_v2 pushed deploy: v2.1.4-patch — Economy fix' },
+            { icon: 'fa-fire-flame-curved', cls: 'tick-ok', text: '[UPTIME] CeylonEsports MC Network: 99.97% Uptime this month' },
+            { icon: 'fa-lock', cls: '', text: '[AUTH] Login Gateway: 0 unauthorized access attempts logged' },
+            { icon: 'fa-network-wired', cls: 'tick-ok', text: '[PROXY] BungeeCord Tunnel: Latency avg 4ms — Nominal' },
+        ];
+
+        // Duplicate logs twice for seamless infinite scroll
+        const allLogs = [...logs, ...logs];
+
+        allLogs.forEach(log => {
+            const entry = document.createElement('span');
+            entry.className = 'tick-entry';
+            entry.innerHTML = `<i class="fa-solid ${log.icon}"></i><span class="${log.cls}">${log.text}</span><span class="tick-sep">•</span>`;
+            tickerContent.appendChild(entry);
+        });
+    }
 });
