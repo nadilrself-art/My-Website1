@@ -3,9 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Nadil | Personal Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <a href="#home" class="logo">Nadil<span>.</span></a>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="greeting">Hi there, I'm</span>
+            <h1>Nadil <span class="highlight">Ranasinghe</span></h1>
+            <p class="role">Creative Developer & Tech Enthusiast</p>
+            <p class="bio-summary">I craft responsive, modern, and user-friendly digital experiences with clean code and modern designs.</p>
+            
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/nadilrself-art" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" target="_blank" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:your-email@example.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="avatar-glow"></div>
+            <div class="avatar-card">
+                <i class="fa-solid fa-code icon-code"></i>
+                <div class="status-badge"><span class="pulse"></span> Open to Projects</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Hello! I'm a passionate web creator who loves turning complex problems into simple, beautiful, and intuitive designs.</p>
+                <p>When I'm not coding or designing, I explore new technologies, digital arts, and gaming communities.</p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Location:</span>
+                        <span class="val">Sri Lanka</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Experience:</span>
+                        <span class="val">Front-end & Web Design</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Status:</span>
+                        <span class="val text-green">Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fa-brands fa-html5"></i>
+                <h3>HTML5</h3>
+                <p>Semantic markup, Accessibility, SEO friendly structure</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-brands fa-css3-alt"></i>
+                <h3>CSS3 & Styling</h3>
+                <p>Flexbox, Grid, Responsive Design, Modern Animations</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-brands fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>Interactive DOM, Modern ES6+, Async programming</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-brands fa-git-alt"></i>
+                <h3>Git & GitHub</h3>
+                <p>Version control, branch management, collaboration</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-paintbrush"></i>
+                <h3>UI/UX Design</h3>
+                <p>Clean layouts, visual hierarchy, mobile-first design</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Performance</h3>
+                <p>Fast loading speeds, optimized assets, smooth scrolling</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-regular fa-folder-open folder-icon"></i>
+                    <div class="project-links">
+                        <a href="https://github.com/nadilrself-art/My-Website1" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>Personal Portfolio</h3>
+                <p>A sleek, dark-themed personal portfolio website built with modern HTML5, CSS3, and JavaScript.</p>
+                <div class="project-tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-regular fa-folder-open folder-icon"></i>
+                    <div class="project-links">
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <h3>E-Commerce Concept</h3>
+                <p>A responsive shopping portal concept with product filtering, modern cart interaction, and checkout UI.</p>
+                <div class="project-tags">
+                    <span>Web Design</span>
+                    <span>Responsive</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-regular fa-folder-open folder-icon"></i>
+                    <div class="project-links">
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <h3>Interactive Web App</h3>
+                <p>A dynamic web utility featuring real-time data handling, clean components, and slick animations.</p>
+                <div class="project-tags">
+                    <span>JavaScript</span>
+                    <span>API</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <p class="contact-desc">Interested in collaborating or have a question? Drop a message!</p>
+        <div class="contact-card">
+            <a href="mailto:your-email@example.com" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Say Hello
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Nadil. Built with HTML, CSS & JavaScript.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
