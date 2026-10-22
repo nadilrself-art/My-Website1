@@ -1123,88 +1123,254 @@ main, header, footer {
 }
 
 /* ==========================================================================
-   Contact Section
+   Contact Section (Matching Image: Platform Availability & Direct Transmission)
    ========================================================================== */
-.contact-box {
-    max-width: 800px;
-    margin: 0 auto;
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3.5rem;
+    align-items: flex-start;
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-main-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0.2rem 0 1.2rem;
+    color: var(--pure-white);
+    letter-spacing: -0.5px;
+}
+
+.contact-main-title span {
+    color: var(--primary-red);
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.platform-heading {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 0.6rem;
+}
+
+.platform-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+}
+
+.availability-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.avail-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-top: 2px solid var(--primary-red);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.4rem;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-inner-shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.avail-card:hover {
+    border-color: var(--primary-red);
+    background: var(--glass-bg-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+.avail-card.full-width {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.avail-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: var(--red-subtle);
+    border: 1px solid var(--red-border);
+    color: var(--primary-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+.avail-card.full-width .avail-icon {
+    margin-bottom: 0;
+}
+
+.avail-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.avail-value {
+    color: var(--pure-white);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    word-break: break-all;
+    transition: var(--transition);
+}
+
+.avail-value:hover {
+    color: var(--primary-red);
+}
+
+.discord-tag {
+    font-size: 1.05rem;
+    color: var(--pure-white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.discord-tag i {
+    font-size: 0.75rem;
+    color: var(--primary-red);
+}
+
+.discord-sub {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+/* Right Form Box */
+.contact-form-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    padding: 3.5rem 2rem;
-    text-align: center;
+    padding: 2.8rem 2.4rem;
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     box-shadow: var(--glass-drop-shadow), var(--glass-inner-shadow);
 }
 
-.contact-desc {
-    max-width: 550px;
-    margin: 0.8rem auto 2.5rem;
-    color: var(--text-muted);
-}
-
-.contact-methods {
+.contact-form {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.2rem;
-    margin-bottom: 2.5rem;
+    flex-direction: column;
+    gap: 1.4rem;
 }
 
-.contact-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.05);
+.form-row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(12, 12, 16, 0.75);
     border: 1px solid var(--glass-border);
-    padding: 0.8rem 1.6rem;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.1rem;
     color: var(--pure-white);
-    text-decoration: none;
     font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
     transition: var(--transition);
 }
 
-.contact-pill:hover {
+.form-group input:focus,
+.form-group textarea:focus {
     border-color: var(--primary-red);
-    background: var(--red-subtle);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+    background: rgba(18, 18, 24, 0.95);
 }
 
-.contact-pill i {
-    color: var(--primary-red);
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #475569;
 }
 
-.social-cluster {
-    display: flex;
-    justify-content: center;
-    gap: 1.2rem;
-}
-
-.social-cluster a {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
+.btn-transmit {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #ff0000 0%, #b30000 100%);
+    color: var(--pure-white);
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 6px 25px var(--red-glow);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 1.2rem;
+    gap: 10px;
+    margin-top: 0.4rem;
+    border: none;
+    cursor: pointer;
     transition: var(--transition);
 }
 
-.social-cluster a:hover {
-    color: var(--pure-white);
-    background: var(--primary-red);
-    border-color: var(--primary-red);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px var(--red-glow);
+.btn-transmit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 0, 0, 0.6);
+}
+
+.form-footer-security {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    letter-spacing: 0.8px;
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 968px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .availability-grid {
+        grid-template-columns: 1fr;
+    }
+    .avail-card.full-width {
+        grid-column: span 1;
+    }
+    .form-row-two {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==========================================================================
