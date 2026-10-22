@@ -465,77 +465,95 @@
             </div>
         </section>
 
-        <!-- Contact Section (Matching Image: Platform Availability & Direct Message Transmission) -->
+        <!-- Contact Section (Nexiz Direct Command & Transmission Hub) -->
         <section class="section contact" id="contact">
             <div class="container">
-                <div class="contact-layout">
-                    <!-- Left Column: Platform Availability -->
-                    <div class="contact-left">
-                        <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Get In Touch</span>
-                        <h2 class="contact-main-title">Contact <span>Me</span></h2>
-                        <h3 class="platform-heading">Platform Availability</h3>
-                        <p class="platform-desc">
-                            I'm always open to discussing new projects, Minecraft server technical infrastructure, or moderation leadership. Drop me a message or reach out via social platforms.
-                        </p>
-
-                        <div class="availability-grid">
-                            <!-- Inquiries -->
-                            <div class="avail-card">
-                                <div class="avail-icon"><i class="fa-regular fa-envelope"></i></div>
-                                <span class="avail-label">INQUIRIES</span>
-                                <a href="mailto:your-email@example.com" class="avail-value">nadilhavindu@gmail.com</a>
+                <div class="command-hub-card">
+                    <!-- Top Hub Status Bar -->
+                    <div class="hub-header">
+                        <div class="hub-title-group">
+                            <span class="hub-badge"><i class="fa-solid fa-satellite-dish"></i> DIRECT CHANNEL</span>
+                            <h2>Transmission & <span>Inquiries</span></h2>
+                            <p>Direct communication pipeline for Minecraft server engineering, network consulting, and staff administration.</p>
+                        </div>
+                        <div class="hub-status-box">
+                            <div class="ping-indicator">
+                                <span class="ping-pulse"></span>
+                                <span>RESPONSE TIME: &lt; 2H</span>
                             </div>
-
-                            <!-- Network / Company -->
-                            <div class="avail-card">
-                                <div class="avail-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
-                                <span class="avail-label">NETWORK OPS</span>
-                                <a href="mailto:contact@ceylonesportsmc.xyz" class="avail-value">admin@ceylonesportsmc.xyz</a>
-                            </div>
-
-                            <!-- Discord (Full width) -->
-                            <div class="avail-card full-width">
-                                <div class="avail-icon"><i class="fa-brands fa-discord"></i></div>
-                                <div>
-                                    <span class="avail-label">DISCORD</span>
-                                    <div class="discord-tag">
-                                        <strong>Nexiz_v2</strong> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </div>
-                                    <span class="discord-sub">Community & Support Direct Channel</span>
-                                </div>
-                            </div>
+                            <span class="hub-server-ref">NODE: CEYLON-HQ</span>
                         </div>
                     </div>
 
-                    <!-- Right Column: Interactive Transmit Message Form -->
-                    <div class="contact-right">
-                        <div class="contact-form-glass">
-                            <form id="contactForm" class="contact-form" onsubmit="event.preventDefault(); alert('Message transmitted successfully!');">
-                                <div class="form-row-two">
-                                    <div class="form-group">
-                                        <label for="userName">NAME</label>
-                                        <input type="text" id="userName" placeholder="Enter your name" required autocomplete="off">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="userEmail">EMAIL</label>
-                                        <input type="email" id="userEmail" placeholder="your@email.com" required autocomplete="off">
-                                    </div>
+                    <!-- Inner 2-Column Command Workspace -->
+                    <div class="hub-workspace">
+                        <!-- Left: Tactical Comms Matrix -->
+                        <div class="comms-matrix">
+                            <div class="matrix-heading">
+                                <i class="fa-solid fa-tower-broadcast text-red"></i>
+                                <h4>Available Frequency Channels</h4>
+                            </div>
+
+                            <a href="mailto:nadilhavindu@gmail.com" class="comm-channel-tile">
+                                <div class="comm-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
+                                <div class="comm-meta">
+                                    <span class="channel-tag">DIRECT EMAIL</span>
+                                    <span class="channel-val">nadilhavindu@gmail.com</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right channel-arrow"></i>
+                            </a>
+
+                            <a href="https://ceylonesportsmc.xyz" target="_blank" rel="noopener noreferrer" class="comm-channel-tile">
+                                <div class="comm-icon-box"><i class="fa-solid fa-server"></i></div>
+                                <div class="comm-meta">
+                                    <span class="channel-tag">NETWORK PORTAL</span>
+                                    <span class="channel-val">ceylonesportsmc.xyz</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square channel-arrow"></i>
+                            </a>
+
+                            <div class="comm-channel-tile active-discord">
+                                <div class="comm-icon-box discord-box"><i class="fa-brands fa-discord"></i></div>
+                                <div class="comm-meta">
+                                    <span class="channel-tag">DISCORD HANDLE</span>
+                                    <span class="channel-val">Nexiz_v2</span>
+                                </div>
+                                <span class="tag-live">ONLINE</span>
+                            </div>
+
+                            <div class="timezone-pill">
+                                <i class="fa-regular fa-clock text-red"></i>
+                                <span>Operating Hours: 09:00 - 23:00 (GMT+5:30)</span>
+                            </div>
+                        </div>
+
+                        <!-- Right: Command Dispatcher Form -->
+                        <div class="dispatcher-box">
+                            <form id="contactForm" class="dispatcher-form" onsubmit="event.preventDefault(); alert('Transmission dispatched to Nexiz_v2!');">
+                                <div class="dispatcher-header">
+                                    <i class="fa-solid fa-terminal text-red"></i>
+                                    <span>Dispatch Secure Message</span>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="userMessage">MESSAGE</label>
-                                    <textarea id="userMessage" rows="5" placeholder="Tell me about your project, server inquiries, or moderation needs..." required></textarea>
+                                <div class="input-field-wrap">
+                                    <div class="field-icon"><i class="fa-solid fa-user"></i></div>
+                                    <input type="text" id="userName" placeholder="Your Name or Tag" required autocomplete="off">
                                 </div>
 
-                                <button type="submit" class="btn btn-transmit">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                    <span>TRANSMIT MESSAGE</span>
+                                <div class="input-field-wrap">
+                                    <div class="field-icon"><i class="fa-solid fa-at"></i></div>
+                                    <input type="email" id="userEmail" placeholder="Your Email Address" required autocomplete="off">
+                                </div>
+
+                                <div class="input-field-wrap textarea-wrap">
+                                    <div class="field-icon"><i class="fa-solid fa-message"></i></div>
+                                    <textarea id="userMessage" rows="4" placeholder="Brief your project scope, server optimization request, or moderation query..." required></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-dispatch">
+                                    <span class="dispatch-text">DISPATCH TRANSMISSION</span>
+                                    <span class="dispatch-icon"><i class="fa-solid fa-bolt"></i></span>
                                 </button>
-
-                                <div class="form-footer-security">
-                                    <i class="fa-solid fa-shield-halved text-red"></i>
-                                    <span>ENCRYPTED DIRECT CHANNEL • VERIFICATION ENABLED</span>
-                                </div>
                             </form>
                         </div>
                     </div>
