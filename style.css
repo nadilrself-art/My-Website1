@@ -467,87 +467,160 @@ main, header, footer {
 
 .text-red { color: var(--primary-red) !important; }
 
-/* Terminal Window */
+/* ==========================================================================
+   Hero Visual Showcase: 3D Layered Glass Stack (Unique Custom Identity)
+   ========================================================================== */
 .hero-visual {
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.code-terminal {
-    width: 100%;
-    max-width: 500px;
+.hero-showcase-stack {
+    position: relative;
+    width: 360px;
+    height: 420px;
+}
+
+/* Layer Stack Backgrounds */
+.stack-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+}
+
+.layer-back {
+    background: rgba(255, 0, 0, 0.06);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    transform: rotate(7deg) scale(0.96);
+    backdrop-filter: blur(8px);
+    z-index: 1;
+}
+
+.layer-middle {
+    background: rgba(18, 18, 24, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: rotate(3.5deg) scale(0.98);
+    backdrop-filter: var(--glass-blur);
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.layer-front {
     background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-top: 2px solid var(--primary-red);
-    border-radius: var(--radius-md);
-    box-shadow: var(--glass-drop-shadow), var(--glass-inner-shadow), 0 0 30px rgba(255, 0, 0, 0.15);
-    overflow: hidden;
+    border: 1.5px solid var(--glass-border);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-drop-shadow), var(--glass-inner-shadow), 0 0 30px rgba(255, 0, 0, 0.2);
+    z-index: 3;
+    overflow: hidden;
 }
 
-.terminal-header {
-    background: rgba(14, 14, 18, 0.65);
-    padding: 12px 16px;
+.hero-showcase-stack:hover .layer-back {
+    transform: rotate(11deg) scale(0.95);
+    border-color: var(--primary-red);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+}
+
+.hero-showcase-stack:hover .layer-middle {
+    transform: rotate(5.5deg) scale(0.98);
+    border-color: rgba(255, 0, 0, 0.4);
+}
+
+.hero-showcase-stack:hover .layer-front {
+    transform: translateY(-4px);
+    border-color: var(--primary-red);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), var(--glass-inner-shadow), 0 0 35px rgba(255, 0, 0, 0.4);
+}
+
+/* Avatar Frame & Picture */
+.avatar-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #09090d;
+}
+
+.hero-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s;
+    filter: contrast(1.05) brightness(0.95);
+}
+
+.hero-showcase-stack:hover .hero-avatar-img {
+    transform: scale(1.06);
+    filter: contrast(1.1) brightness(1);
+}
+
+.avatar-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(6, 6, 9, 0.9) 100%);
+    pointer-events: none;
+}
+
+.avatar-floating-meta {
+    position: absolute;
+    bottom: 18px;
+    left: 20px;
+    right: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--glass-border);
+    z-index: 4;
 }
 
-.terminal-dots {
-    display: flex;
-    gap: 8px;
-}
-
-.terminal-btn {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-}
-.terminal-btn.close { background: #ff0000; box-shadow: 0 0 6px rgba(255, 0, 0, 0.7); }
-.terminal-btn.min { background: #eab308; }
-.terminal-btn.max { background: #ffffff; opacity: 0.8; }
-
-.terminal-title {
+.meta-tag {
     font-family: 'Fira Code', monospace;
-    font-size: 0.78rem;
-    color: var(--text-dim);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--pure-white);
+    background: rgba(0, 0, 0, 0.65);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
 }
 
-.badge-status {
+.meta-status {
     font-family: 'Fira Code', monospace;
-    font-size: 0.65rem;
-    background: rgba(255, 0, 0, 0.15);
-    border: 1px solid var(--red-border);
-    color: var(--primary-red);
-    padding: 2px 8px;
-    border-radius: var(--radius-full);
+    font-size: 0.72rem;
     font-weight: 700;
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(6px);
 }
 
-.terminal-body {
-    padding: 1.5rem;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    line-height: 1.65;
+.status-live-pulse {
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+    animation: livePulse 2s infinite;
 }
 
-.code-line { margin-bottom: 5px; }
-.code-kw { color: #ff3333; font-weight: 600; }
-.code-var { color: #ffffff; font-weight: 500; }
-.code-str { color: #fca5a5; }
-.code-bool { color: #ffffff; font-weight: bold; }
-.code-cmd { color: #ffffff; }
-.code-prompt { color: var(--primary-red); font-weight: bold; }
-.code-comment { color: #64748b; font-style: italic; }
-
-.blinking-cursor {
-    color: var(--primary-red);
-    font-weight: bold;
-    animation: blink 1s step-end infinite;
+@media (max-width: 600px) {
+    .hero-showcase-stack {
+        width: 290px;
+        height: 350px;
+    }
 }
-@keyframes blink { 50% { opacity: 0; } }
 
 /* ==========================================================================
    Section General
