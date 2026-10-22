@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     typeEffect();
 
-    // 4. Interactive Constellation Canvas (Matching Image Style)
+    // 4. Interactive Networking, Development & Moderation Cyber Matrix Canvas
     const canvas = document.getElementById('constellationCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let mouse = {
             x: null,
             y: null,
-            radius: 160 // Mouse interaction radius
+            radius: 175
         };
 
         window.addEventListener('mousemove', (e) => {
@@ -123,37 +123,44 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            initParticles();
+            initNodes();
         });
 
-        let particles = [];
+        // Network Data Packets moving along links
+        let packets = [];
+        let nodes = [];
 
-        class Particle {
+        // Coding symbols for Dev/Moderation vibe
+        const devSymbols = ['{ }', '</>', '20.0', 'TPS', 'SQL', 'SSH', 'JVM', 'ACL', 'AUTH', '🛡️', 'HEX'];
+
+        class NetworkNode {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.vx = (Math.random() - 0.5) * 0.45;
-                this.vy = (Math.random() - 0.5) * 0.45;
-                this.radius = Math.random() * 1.8 + 0.8;
-                this.isRed = Math.random() < 0.25;
+                this.vx = (Math.random() - 0.5) * 0.42;
+                this.vy = (Math.random() - 0.5) * 0.42;
+                this.radius = Math.random() * 2 + 1.2;
+                this.isCoreServer = Math.random() < 0.22; // Server Core Node
+                this.hasSymbol = Math.random() < 0.25;
+                this.symbol = devSymbols[Math.floor(Math.random() * devSymbols.length)];
+                this.pulsePhase = Math.random() * Math.PI * 2;
             }
 
             update() {
-                // Mouse repulsion & interaction
+                this.pulsePhase += 0.03;
+
+                // Mouse interaction / Repulsion
                 if (mouse.x !== null && mouse.y !== null) {
                     const dx = mouse.x - this.x;
                     const dy = mouse.y - this.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < mouse.radius) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        // Gently push particles away from mouse
-                        this.x -= forceDirectionX * force * 3;
-                        this.y -= forceDirectionY * force * 3;
+                    if (dist < mouse.radius) {
+                        const forceDirectionX = dx / dist;
+                        const forceDirectionY = dy / dist;
+                        const force = (mouse.radius - dist) / mouse.radius;
+                        this.x -= forceDirectionX * force * 3.2;
+                        this.y -= forceDirectionY * force * 3.2;
                     }
                 }
 
@@ -169,46 +176,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                if (this.isRed) {
-                    ctx.fillStyle = 'rgba(255, 0, 0, 0.75)';
-                    ctx.shadowColor = 'rgba(255, 0, 0, 0.8)';
-                    ctx.shadowBlur = 6;
+                const pulseSize = this.radius + Math.sin(this.pulsePhase) * 0.5;
+                ctx.arc(this.x, this.y, Math.max(pulseSize, 0.8), 0, Math.PI * 2);
+
+                if (this.isCoreServer) {
+                    ctx.fillStyle = '#ff0000';
+                    ctx.shadowColor = 'rgba(255, 0, 0, 0.9)';
+                    ctx.shadowBlur = 9;
                 } else {
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
                     ctx.shadowColor = 'transparent';
                     ctx.shadowBlur = 0;
                 }
                 ctx.fill();
+
+                // Faint Dev / Moderation Code Tags near some nodes
+                if (this.hasSymbol) {
+                    ctx.font = '8px "Fira Code", monospace';
+                    ctx.fillStyle = this.isCoreServer ? 'rgba(255, 80, 80, 0.5)' : 'rgba(200, 200, 200, 0.35)';
+                    ctx.fillText(this.symbol, this.x + 8, this.y + 3);
+                }
             }
         }
 
-        function initParticles() {
-            particles = [];
-            const count = Math.min(Math.max(Math.floor((width * height) / 16000), 40), 95);
+        class DataPacket {
+            constructor(startNode, endNode) {
+                this.start = startNode;
+                this.end = endNode;
+                this.progress = 0;
+                this.speed = Math.random() * 0.015 + 0.008;
+            }
+
+            update() {
+                this.progress += this.speed;
+            }
+
+            draw() {
+                const currentX = this.start.x + (this.end.x - this.start.x) * this.progress;
+                const currentY = this.start.y + (this.end.y - this.start.y) * this.progress;
+
+                ctx.beginPath();
+                ctx.arc(currentX, currentY, 1.8, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowColor = '#ff0000';
+                ctx.shadowBlur = 8;
+                ctx.fill();
+            }
+        }
+
+        function initNodes() {
+            nodes = [];
+            packets = [];
+            const count = Math.min(Math.max(Math.floor((width * height) / 15000), 45), 90);
             for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
+                nodes.push(new NetworkNode());
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
-            // Connect nearby particles with lines
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
+            // Spawn network packets across random linked nodes
+            if (Math.random() < 0.06 && packets.length < 15 && nodes.length > 2) {
+                const i = Math.floor(Math.random() * nodes.length);
+                const j = (i + 1 + Math.floor(Math.random() * 5)) % nodes.length;
+                const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+                if (dist < 140) {
+                    packets.push(new DataPacket(nodes[i], nodes[j]));
+                }
+            }
+
+            // Draw network connections
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 130) {
-                        const alpha = (1 - dist / 130) * 0.18;
+                    if (dist < 135) {
+                        const alpha = (1 - dist / 135) * 0.22;
                         ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        
-                        if (particles[i].isRed || particles[j].isRed) {
-                            ctx.strokeStyle = `rgba(255, 0, 0, ${alpha * 1.2})`;
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+
+                        if (nodes[i].isCoreServer || nodes[j].isCoreServer) {
+                            ctx.strokeStyle = `rgba(255, 0, 0, ${alpha * 1.3})`;
                         } else {
                             ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
                         }
@@ -217,16 +269,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Connect particles directly to the mouse cursor
+                // Connect to mouse cursor with dynamic red data line
                 if (mouse.x !== null && mouse.y !== null) {
-                    const dx = mouse.x - particles[i].x;
-                    const dy = mouse.y - particles[i].y;
+                    const dx = mouse.x - nodes[i].x;
+                    const dy = mouse.y - nodes[i].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
                     if (dist < 150) {
-                        const alpha = (1 - dist / 150) * 0.35;
+                        const alpha = (1 - dist / 150) * 0.4;
                         ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
                         ctx.lineTo(mouse.x, mouse.y);
                         ctx.strokeStyle = `rgba(255, 0, 0, ${alpha})`;
                         ctx.lineWidth = 1;
@@ -235,15 +287,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            particles.forEach(p => {
-                p.update();
-                p.draw();
+            // Animate and render packets
+            for (let k = packets.length - 1; k >= 0; k--) {
+                packets[k].update();
+                packets[k].draw();
+                if (packets[k].progress >= 1) {
+                    packets.splice(k, 1);
+                }
+            }
+
+            nodes.forEach(node => {
+                node.update();
+                node.draw();
             });
 
             requestAnimationFrame(animate);
         }
 
-        initParticles();
+        initNodes();
         animate();
     }
 
