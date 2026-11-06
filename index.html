@@ -4,83 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexiz_v2 | Minecraft Server Architect & Network Owner</title>
-    <!-- Favicon (Browser Tab Icon) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/wTQhw08N/Nexiz-Dis-Logo.jpg">
     <link rel="apple-touch-icon" href="https://i.postimg.cc/wTQhw08N/Nexiz-Dis-Logo.jpg">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Custom Mouse Cursor Elements -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
-    <!-- Interactive Canvas & Grid Background -->
-    <div class="bg-grid-overlay"></div>
-    <canvas id="constellationCanvas"></canvas>
-
-    <!-- Floating Binary / Hex Code Streams -->
-    <div class="binary-streams-layer" id="binaryLayer"></div>
-
-    <!-- Bottom Live Server Log Ticker -->
-    <div class="server-log-ticker">
-        <div class="ticker-label"><i class="fa-solid fa-satellite-dish"></i> LIVE OPS</div>
-        <div class="ticker-track">
-            <div class="ticker-content" id="tickerContent"></div>
-        </div>
-    </div>
-
-    <!-- Background Animated Mesh/Gradients -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
+    <!-- Subtle Ambient Glow -->
+    <div class="ambient-glow"></div>
 
     <!-- Navigation Bar -->
     <header class="navbar" id="navbar">
-        <a href="#home" class="logo">Nexiz_v2</a>
-        <nav class="nav-links">
-            <a href="#home" class="nav-item active">Home</a>
-            <a href="#network-status" class="nav-item">Network Ops</a>
-            <a href="#about" class="nav-item">About</a>
-            <a href="#skills" class="nav-item">Architecture</a>
-            <a href="#projects" class="nav-item">Infrastructure</a>
-            <a href="#contact" class="nav-item">Terminal / Contact</a>
-        </nav>
-        <div class="nav-actions">
-            <div class="live-status-pill">
-                <span class="live-dot"></span>
-                <span>SYSTEM ONLINE</span>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-mark">N</span>
+                <span class="logo-text">Nexiz_v2</span>
+            </a>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-item active">Home</a>
+                <a href="#network-status" class="nav-item">Network Ops</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Architecture</a>
+                <a href="#projects" class="nav-item">Infrastructure</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span>System Online</span>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </button>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section class="hero" id="home">
-            <div class="hero-container">
+            <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="terminal-prefix">&gt; sudo systemctl start nexiz-ops</div>
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span>Minecraft Systems & Network Architecture</span>
+                    </div>
+
                     <h1 class="hero-title">
                         Architecting Scalable <br>
-                        <span class="gradient-text typing-text">Minecraft Server Development</span>
+                        <span class="typing-text">Minecraft Server Development</span>
                     </h1>
-                    <p class="hero-subtitle">
-                        I am <strong class="text-white">Nadil Havindu</strong> (<span class="code-tag">Nexiz_v2</span>), Owner of <strong class="text-white">CeylonEsports Minecraft Network</strong>. Specializing in high-throughput network architectures, low-latency JVM optimization, custom game coding, and battle-hardened community moderation.
+
+                    <p class="hero-description">
+                        I am <strong>Nadil Havindu</strong> (<span class="code-tag">Nexiz_v2</span>), Owner of <strong>CeylonEsports Minecraft Network</strong>. Specializing in high-throughput network architectures, low-latency JVM optimization, custom game coding, and battle-hardened community moderation.
                     </p>
 
-                    <div class="hero-cta">
+                    <div class="hero-actions">
                         <a href="#network-status" class="btn btn-primary">
                             <i class="fa-solid fa-server"></i>
                             <span>Network Telemetry</span>
                         </a>
-                        <a href="#contact" class="btn btn-glass">
+                        <a href="#contact" class="btn btn-secondary">
                             <i class="fa-solid fa-shield-halved"></i>
                             <span>Admin Inquiry</span>
                         </a>
@@ -88,49 +80,45 @@
 
                     <!-- Telemetry Stats Strip -->
                     <div class="telemetry-strip">
-                        <div class="telemetry-card">
-                            <div class="t-top">
-                                <span class="t-label">NETWORK TPS</span>
-                                <i class="fa-solid fa-gauge text-red"></i>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-label">NETWORK TPS</span>
+                                <i class="fa-solid fa-gauge-high stat-icon"></i>
                             </div>
-                            <div class="t-val text-white">20.0 <span class="unit">/ 20</span></div>
-                            <div class="t-sub">Zero Tick Loss</div>
+                            <div class="stat-value">20.0 <span class="stat-unit">/ 20</span></div>
+                            <div class="stat-sub">Zero Tick Loss</div>
                         </div>
-                        <div class="telemetry-card">
-                            <div class="t-top">
-                                <span class="t-label">SERVER CORES</span>
-                                <i class="fa-solid fa-microchip text-red"></i>
+
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-label">SERVER CORES</span>
+                                <i class="fa-solid fa-microchip stat-icon"></i>
                             </div>
-                            <div class="t-val text-white">Purpur & Velocity</div>
-                            <div class="t-sub">Multi-Proxy Cluster</div>
+                            <div class="stat-value">Purpur & Velocity</div>
+                            <div class="stat-sub">Multi-Proxy Cluster</div>
                         </div>
-                        <div class="telemetry-card">
-                            <div class="t-top">
-                                <span class="t-label">MODERATION</span>
-                                <i class="fa-solid fa-shield-cat text-red"></i>
+
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-label">MODERATION</span>
+                                <i class="fa-solid fa-shield-cat stat-icon"></i>
                             </div>
-                            <div class="t-val text-white">Active Anti-Cheat</div>
-                            <div class="t-sub">24/7 Threat Mitigation</div>
+                            <div class="stat-value">Active Anti-Cheat</div>
+                            <div class="stat-sub">24/7 Threat Mitigation</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="hero-visual">
-                    <div class="hero-showcase-stack">
-                        <!-- Background Cyber / Glass Aesthetic Stack Layers -->
-                        <div class="stack-layer layer-back"></div>
-                        <div class="stack-layer layer-middle"></div>
-                        
-                        <!-- Main Front Avatar Frame with Logo -->
-                        <div class="stack-layer layer-front">
-                            <div class="avatar-frame">
-                                <img src="https://i.postimg.cc/wTQhw08N/Nexiz-Dis-Logo.jpg" alt="Nexiz_v2 Avatar" class="hero-avatar-img">
-                                <div class="avatar-gradient-overlay"></div>
-                                
-                                <div class="avatar-floating-meta">
-                                    <span class="meta-tag">NEXIZ_V2</span>
-                                    <span class="meta-status"><span class="status-live-pulse"></span> ONLINE</span>
-                                </div>
+                    <div class="avatar-card">
+                        <div class="avatar-image-wrap">
+                            <img src="https://i.postimg.cc/wTQhw08N/Nexiz-Dis-Logo.jpg" alt="Nexiz_v2" class="avatar-img">
+                        </div>
+                        <div class="avatar-meta">
+                            <div class="avatar-tag">NEXIZ_V2</div>
+                            <div class="avatar-status">
+                                <span class="status-dot"></span>
+                                <span>ONLINE</span>
                             </div>
                         </div>
                     </div>
@@ -139,100 +127,124 @@
         </section>
 
         <!-- Live Network Telemetry / Operations Dashboard -->
-        <section class="section network-status" id="network-status">
+        <section class="section" id="network-status">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag"><i class="fa-solid fa-satellite-dish"></i> Operations</span>
-                    <h2 class="section-title">Network Infrastructure & <span>Live Ops</span></h2>
+                    <div class="section-tag">
+                        <i class="fa-solid fa-satellite-dish"></i> Operations
+                    </div>
+                    <h2 class="section-title">Network Infrastructure & Live Ops</h2>
+                    <p class="section-subtitle">Real-time telemetry and cluster health monitoring for CeylonEsports infrastructure.</p>
                 </div>
 
                 <div class="dashboard-grid">
-                    <div class="dashboard-panel">
-                        <div class="panel-head">
-                            <h4><i class="fa-solid fa-network-wired text-red"></i> Topology & Routing</h4>
-                            <span class="pill-green">ONLINE</span>
+                    <div class="dashboard-card">
+                        <div class="card-head">
+                            <div class="card-title-group">
+                                <i class="fa-solid fa-network-wired accent-icon"></i>
+                                <h3>Topology & Routing</h3>
+                            </div>
+                            <span class="badge-status online">ONLINE</span>
                         </div>
-                        <p class="panel-desc">Advanced proxy load-balancing routing players between Survival, Practice, Minigames, and Lobby nodes with ultra-low latency.</p>
-                        <div class="server-node-list">
-                            <div class="node-row">
-                                <span class="node-name"><i class="fa-solid fa-server"></i> Lobby Node-01</span>
-                                <span class="node-stat text-red">TPS: 20.0</span>
+                        <p class="card-desc">Advanced proxy load-balancing routing players between Survival, Practice, Minigames, and Lobby nodes with ultra-low latency.</p>
+                        
+                        <div class="node-list">
+                            <div class="node-item">
+                                <div class="node-info">
+                                    <i class="fa-solid fa-server"></i>
+                                    <span>Lobby Node-01</span>
+                                </div>
+                                <span class="node-metric">TPS: 20.0</span>
                                 <span class="node-ping">4ms</span>
                             </div>
-                            <div class="node-row">
-                                <span class="node-name"><i class="fa-solid fa-gamepad"></i> Survival SMP Node</span>
-                                <span class="node-stat text-red">TPS: 19.98</span>
+                            <div class="node-item">
+                                <div class="node-info">
+                                    <i class="fa-solid fa-gamepad"></i>
+                                    <span>Survival SMP Node</span>
+                                </div>
+                                <span class="node-metric">TPS: 19.98</span>
                                 <span class="node-ping">9ms</span>
                             </div>
-                            <div class="node-row">
-                                <span class="node-name"><i class="fa-solid fa-swords"></i> PvP / Esports Arena</span>
-                                <span class="node-stat text-red">TPS: 20.0</span>
+                            <div class="node-item">
+                                <div class="node-info">
+                                    <i class="fa-solid fa-swords"></i>
+                                    <span>PvP / Esports Arena</span>
+                                </div>
+                                <span class="node-metric">TPS: 20.0</span>
                                 <span class="node-ping">6ms</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dashboard-panel">
-                        <div class="panel-head">
-                            <h4><i class="fa-solid fa-shield-halved text-red"></i> Moderation & Security Protocol</h4>
-                            <span class="pill-red">ENFORCING</span>
+                    <div class="dashboard-card">
+                        <div class="card-head">
+                            <div class="card-title-group">
+                                <i class="fa-solid fa-shield-halved accent-icon"></i>
+                                <h3>Moderation & Security Protocol</h3>
+                            </div>
+                            <span class="badge-status alert">ENFORCING</span>
                         </div>
-                        <p class="panel-desc">Automated heuristics, player behavior analysis, anti-VPN detection, and Discord webhooks alert moderation team instantly.</p>
-                        <ul class="security-checklist">
-                            <li><i class="fa-solid fa-check text-red"></i> Enterprise ML Anti-Cheat behavioral checks</li>
-                            <li><i class="fa-solid fa-check text-red"></i> Packet exploit & dupe mitigation engine</li>
-                            <li><i class="fa-solid fa-check text-red"></i> Strict chat filtering, anti-toxicity & anti-spam</li>
-                            <li><i class="fa-solid fa-check text-red"></i> Role hierarchy & staff command auditing logs</li>
+                        <p class="card-desc">Automated heuristics, player behavior analysis, anti-VPN detection, and Discord webhooks alert moderation team instantly.</p>
+                        
+                        <ul class="feature-checklist">
+                            <li><i class="fa-solid fa-check"></i> Enterprise ML Anti-Cheat behavioral checks</li>
+                            <li><i class="fa-solid fa-check"></i> Packet exploit & dupe mitigation engine</li>
+                            <li><i class="fa-solid fa-check"></i> Strict chat filtering, anti-toxicity & anti-spam</li>
+                            <li><i class="fa-solid fa-check"></i> Role hierarchy & staff command auditing logs</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section (With Tactical Photo Banners & Visual Pillars) -->
-        <section class="section about" id="about">
+        <!-- About Section -->
+        <section class="section" id="about">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag"><i class="fa-solid fa-terminal"></i> Bio</span>
-                    <h2 class="section-title">Behind the <span>Console</span></h2>
+                    <div class="section-tag">
+                        <i class="fa-solid fa-terminal"></i> Bio
+                    </div>
+                    <h2 class="section-title">Behind the Console</h2>
+                    <p class="section-subtitle">Bridging infrastructure reliability, software engineering, and community governance.</p>
                 </div>
+
                 <div class="about-grid">
-                    <!-- Left: Bio Showcase Card with Server Ops Banner Photo -->
-                    <div class="about-info-card">
-                        <div class="about-card-banner">
+                    <div class="about-main-card">
+                        <div class="about-banner-wrap">
                             <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Server Operations Infrastructure" class="about-banner-img">
-                            <div class="about-banner-overlay"></div>
-                            <span class="about-banner-badge"><i class="fa-solid fa-server text-red"></i> NETWORK INFRASTRUCTURE</span>
+                            <div class="banner-badge">
+                                <i class="fa-solid fa-server"></i> Network Infrastructure
+                            </div>
                         </div>
 
-                        <div class="about-card-content">
+                        <div class="about-content">
                             <h3>Leading CeylonEsports Minecraft Network into Next-Gen Multiplayer</h3>
                             <p>
-                                Known in the community as <strong class="text-white">Nexiz_v2</strong>, I operate at the intersection of game systems engineering, code architecture, and community governance.
+                                Known in the community as <strong>Nexiz_v2</strong>, I operate at the intersection of game systems engineering, code architecture, and community governance.
                             </p>
                             <p>
                                 Managing a public gaming network isn't just about hosting files—it requires deep knowledge of JVM memory profiling, MySQL database synchronization, plugin architecture, staff hierarchy management, and player psychology.
                             </p>
-                            
-                            <div class="quick-facts">
-                                <div class="fact-item">
-                                    <i class="fa-solid fa-crown"></i>
+
+                            <div class="fact-grid">
+                                <div class="fact-box">
+                                    <i class="fa-solid fa-crown fact-icon"></i>
                                     <div>
-                                        <span class="label">Ownership</span>
+                                        <span class="fact-label">Ownership</span>
                                         <strong>CeylonEsports Minecraft Network</strong>
                                     </div>
                                 </div>
-                                <div class="fact-item">
-                                    <i class="fa-solid fa-code-fork"></i>
+                                <div class="fact-box">
+                                    <i class="fa-solid fa-code-fork fact-icon"></i>
                                     <div>
-                                        <span class="label">Engineering</span>
+                                        <span class="fact-label">Engineering</span>
                                         <strong>Paper / Purpur / Velocity Backend</strong>
                                     </div>
                                 </div>
-                                <div class="fact-item">
-                                    <i class="fa-solid fa-user-shield"></i>
+                                <div class="fact-box">
+                                    <i class="fa-solid fa-user-shield fact-icon"></i>
                                     <div>
-                                        <span class="label">Moderation Head</span>
+                                        <span class="fact-label">Moderation Head</span>
                                         <strong>Zero-Tolerance Security & Fairness</strong>
                                     </div>
                                 </div>
@@ -240,46 +252,33 @@
                         </div>
                     </div>
 
-                    <!-- Right: Visual Highlights with Mini Photo Thumbnails -->
-                    <div class="about-highlights">
-                        <!-- Highlight 1: Engine Optimization -->
-                        <div class="highlight-card with-thumb">
+                    <div class="about-highlights-col">
+                        <div class="highlight-item">
                             <div class="highlight-thumb">
-                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=300&q=80" alt="Hardware & JVM Optimization" class="thumb-img">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=300&q=80" alt="Hardware & JVM Optimization">
                             </div>
-                            <div class="highlight-body">
-                                <div class="highlight-title-row">
-                                    <div class="highlight-icon"><i class="fa-solid fa-sliders"></i></div>
-                                    <h4>Deep JVM & Engine Optimization</h4>
-                                </div>
+                            <div class="highlight-info">
+                                <h4><i class="fa-solid fa-sliders accent-inline"></i> Deep JVM & Engine Optimization</h4>
                                 <p>Aikar's flags tuning, chunk generation pre-caching, entity culling rules, and packet throttling to ensure flawless 20 TPS.</p>
                             </div>
                         </div>
 
-                        <!-- Highlight 2: Coding & Scripts -->
-                        <div class="highlight-card with-thumb">
+                        <div class="highlight-item">
                             <div class="highlight-thumb">
-                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=300&q=80" alt="Code & Automation" class="thumb-img">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=300&q=80" alt="Code & Automation">
                             </div>
-                            <div class="highlight-body">
-                                <div class="highlight-title-row">
-                                    <div class="highlight-icon"><i class="fa-solid fa-code"></i></div>
-                                    <h4>Coding & Script Automation</h4>
-                                </div>
+                            <div class="highlight-info">
+                                <h4><i class="fa-solid fa-code accent-inline"></i> Coding & Script Automation</h4>
                                 <p>Custom command scripts, webhook bots, automated restart routines, and SQL database linking across game modes.</p>
                             </div>
                         </div>
 
-                        <!-- Highlight 3: Staff & Community -->
-                        <div class="highlight-card with-thumb">
+                        <div class="highlight-item">
                             <div class="highlight-thumb">
-                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=300&q=80" alt="Esports Community & Moderation" class="thumb-img">
+                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=300&q=80" alt="Esports Community & Moderation">
                             </div>
-                            <div class="highlight-body">
-                                <div class="highlight-title-row">
-                                    <div class="highlight-icon"><i class="fa-solid fa-gavel"></i></div>
-                                    <h4>Staff Command & Community Culture</h4>
-                                </div>
+                            <div class="highlight-info">
+                                <h4><i class="fa-solid fa-gavel accent-inline"></i> Staff Command & Community Culture</h4>
                                 <p>Training staff moderators, formulating rule frameworks, dispute resolution, and building friendly gaming environments.</p>
                             </div>
                         </div>
@@ -288,86 +287,87 @@
             </div>
         </section>
 
-        <!-- Technical Capabilities Section -->
-        <section class="section skills" id="skills">
+        <!-- Technical Architecture Section -->
+        <section class="section" id="skills">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag"><i class="fa-solid fa-microchip"></i> Arsenal</span>
-                    <h2 class="section-title">Technical <span>Architecture</span></h2>
+                    <div class="section-tag">
+                        <i class="fa-solid fa-microchip"></i> Arsenal
+                    </div>
+                    <h2 class="section-title">Technical Architecture</h2>
+                    <p class="section-subtitle">Core proficiencies across server operations, back-end logic, and security.</p>
                 </div>
 
-                <div class="skills-categories">
-                    <!-- Column 1: Server Systems -->
+                <div class="skills-grid">
                     <div class="skills-column">
-                        <h3 class="category-heading"><i class="fa-solid fa-server"></i> Server Development & Ops</h3>
-                        
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+                        <h3 class="category-title"><i class="fa-solid fa-server accent-inline"></i> Server Development & Ops</h3>
+
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-cube"></i> Purpur / Paper / Spigot Systems</span>
-                                <span class="pct">98%</span>
+                                <span class="skill-pct">98%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 98%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 98%"></div></div>
                         </div>
-                        
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-route"></i> Velocity / BungeeCord Proxy Clustering</span>
-                                <span class="pct">94%</span>
+                                <span class="skill-pct">94%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 94%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 94%"></div></div>
                         </div>
 
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-gauge-high"></i> TPS Diagnostics & Memory Garbage Collection</span>
-                                <span class="pct">92%</span>
+                                <span class="skill-pct">92%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 92%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 92%"></div></div>
                         </div>
 
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-file-code"></i> Plugin Ecosystems (LuckPerms, ItemsAdder, etc.)</span>
-                                <span class="pct">96%</span>
+                                <span class="skill-pct">96%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 96%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 96%"></div></div>
                         </div>
                     </div>
 
-                    <!-- Column 2: Moderation & Coding -->
                     <div class="skills-column">
-                        <h3 class="category-heading"><i class="fa-solid fa-shield-halved"></i> Moderation & Programming</h3>
-                        
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+                        <h3 class="category-title"><i class="fa-solid fa-shield-halved accent-inline"></i> Moderation & Programming</h3>
+
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-shield-cat"></i> Staff Administration & Discord Governance</span>
-                                <span class="pct">95%</span>
+                                <span class="skill-pct">95%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 95%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
                         </div>
 
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-code"></i> Scripting, Webhooks & Logic Coding</span>
-                                <span class="pct">88%</span>
+                                <span class="skill-pct">88%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 88%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 88%"></div></div>
                         </div>
 
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-database"></i> Database Architecture (MySQL / MariaDB)</span>
-                                <span class="pct">86%</span>
+                                <span class="skill-pct">86%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 86%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 86%"></div></div>
                         </div>
 
-                        <div class="skill-meter-card">
-                            <div class="skill-info">
+                        <div class="skill-card">
+                            <div class="skill-header">
                                 <span><i class="fa-solid fa-bug-slash"></i> Anti-Cheat Tuning & Exploit Prevention</span>
-                                <span class="pct">93%</span>
+                                <span class="skill-pct">93%</span>
                             </div>
-                            <div class="meter-bar"><div class="meter-fill" style="width: 93%"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 93%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -375,11 +375,14 @@
         </section>
 
         <!-- Projects Section -->
-        <section class="section projects" id="projects">
+        <section class="section" id="projects">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag"><i class="fa-solid fa-folder-closed"></i> Deployments</span>
-                    <h2 class="section-title">Featured <span>Projects</span></h2>
+                    <div class="section-tag">
+                        <i class="fa-solid fa-folder-closed"></i> Deployments
+                    </div>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Real-world networks, security engines, and developer platforms.</p>
                 </div>
 
                 <div class="projects-grid">
@@ -387,16 +390,15 @@
                     <div class="project-card">
                         <div class="project-banner">
                             <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=800&q=80" alt="CeylonEsports Minecraft Network" class="project-img">
-                            <div class="project-banner-overlay"></div>
-                            <span class="project-status-badge live"><span class="badge-dot"></span> ONGOING 2026 - PRESENT</span>
-                            <a href="https://ceylonesportsmc.xyz/#home" target="_blank" rel="noopener noreferrer" class="banner-ext-link" title="Open Project">
+                            <span class="project-badge status-live"><span class="badge-dot"></span> ONGOING 2026 - PRESENT</span>
+                            <a href="https://ceylonesportsmc.xyz/#home" target="_blank" rel="noopener noreferrer" class="banner-link-btn" title="Open Project" aria-label="Open CeylonEsports MC Network">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
-                        <div class="project-content">
-                            <div class="project-identity">
-                                <div class="project-avatar">
-                                    <i class="fa-solid fa-cube text-red"></i>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-cube"></i>
                                 </div>
                                 <div>
                                     <h3 class="project-title">CeylonEsports MC</h3>
@@ -406,16 +408,14 @@
                             <p class="project-desc">
                                 Sri Lanka's dedicated esports and community multiplayer environment. Equipped with automated rank syncing, custom GUI navigators, DDoS mitigation, and sub-second proxy dispatching.
                             </p>
-                            <div class="tech-stack">
+                            <div class="tech-tags">
                                 <span>Purpur Spigot</span>
                                 <span>Velocity</span>
                                 <span>MySQL</span>
                                 <span>Advanced Anti-Cheat</span>
                             </div>
-                            <div class="project-footer-note">
-                                <i class="fa-solid fa-server"></i> Managing cluster infrastructure, proxy balancing, and zero-tick loss performance.
-                            </div>
-                            <div class="project-actions">
+                            <div class="project-footer">
+                                <p class="project-note"><i class="fa-solid fa-server"></i> Managing cluster infrastructure, proxy balancing, and zero-tick loss performance.</p>
                                 <a href="https://ceylonesportsmc.xyz/#home" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                                     <i class="fa-solid fa-gamepad"></i> Access Network
                                 </a>
@@ -423,20 +423,19 @@
                         </div>
                     </div>
 
-                    <!-- Project 2: Automated Moderation & Anti-Grief Engine -->
+                    <!-- Project 2: Security & Anti-Grief Engine -->
                     <div class="project-card">
                         <div class="project-banner">
                             <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" alt="Security Protocol" class="project-img">
-                            <div class="project-banner-overlay"></div>
-                            <span class="project-status-badge active"><span class="badge-dot"></span> ACTIVE DEFENSE</span>
-                            <a href="#contact" class="banner-ext-link" title="Inquire Security">
+                            <span class="project-badge status-active"><span class="badge-dot"></span> ACTIVE DEFENSE</span>
+                            <a href="#contact" class="banner-link-btn" title="Inquire Security" aria-label="Inquire Security Protocol">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
-                        <div class="project-content">
-                            <div class="project-identity">
-                                <div class="project-avatar">
-                                    <i class="fa-solid fa-shield-halved text-red"></i>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-shield-halved"></i>
                                 </div>
                                 <div>
                                     <h3 class="project-title">Security & Anti-Grief</h3>
@@ -446,17 +445,15 @@
                             <p class="project-desc">
                                 Multi-layered protection matrix combining rollback systems, packet auditing, staff panic alerts, and webhook-based ban appeal pipelines.
                             </p>
-                            <div class="tech-stack">
+                            <div class="tech-tags">
                                 <span>CoreProtect</span>
                                 <span>DiscordSRV</span>
                                 <span>PacketEvents</span>
                                 <span>Heuristics</span>
                             </div>
-                            <div class="project-footer-note">
-                                <i class="fa-solid fa-user-shield"></i> Enforcing zero-tolerance anti-cheat heuristics and community moderation protocols.
-                            </div>
-                            <div class="project-actions">
-                                <a href="#contact" class="btn btn-outline btn-sm">
+                            <div class="project-footer">
+                                <p class="project-note"><i class="fa-solid fa-user-shield"></i> Enforcing zero-tolerance anti-cheat heuristics and community moderation protocols.</p>
+                                <a href="#contact" class="btn btn-secondary btn-sm">
                                     <i class="fa-solid fa-shield"></i> Security Specs
                                 </a>
                             </div>
@@ -467,16 +464,15 @@
                     <div class="project-card">
                         <div class="project-banner">
                             <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Nexiz_v2 Portal" class="project-img">
-                            <div class="project-banner-overlay"></div>
-                            <span class="project-status-badge completed"><span class="badge-dot"></span> LIVE PRODUCTION</span>
-                            <a href="https://github.com/nadilrself-art/My-Website1" target="_blank" rel="noopener noreferrer" class="banner-ext-link" title="Source Code">
+                            <span class="project-badge status-live"><span class="badge-dot"></span> LIVE PRODUCTION</span>
+                            <a href="https://github.com/nadilrself-art/My-Website1" target="_blank" rel="noopener noreferrer" class="banner-link-btn" title="Source Code" aria-label="View Source on GitHub">
                                 <i class="fa-brands fa-github"></i>
                             </a>
                         </div>
-                        <div class="project-content">
-                            <div class="project-identity">
-                                <div class="project-avatar">
-                                    <i class="fa-solid fa-code text-red"></i>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <div class="project-icon-box">
+                                    <i class="fa-solid fa-code"></i>
                                 </div>
                                 <div>
                                     <h3 class="project-title">Nexiz_v2 Portal</h3>
@@ -484,19 +480,17 @@
                                 </div>
                             </div>
                             <p class="project-desc">
-                                High-speed developer portal designed with dark cybernetic aesthetic, interactive constellation physics, and real-time telemetry elements.
+                                Fast, responsive personal portfolio designed with modern typography, subtle dark aesthetic, and structured telemetry cards.
                             </p>
-                            <div class="tech-stack">
+                            <div class="tech-tags">
                                 <span>HTML5</span>
-                                <span>CSS3 Canvas</span>
+                                <span>Modern CSS</span>
                                 <span>JavaScript ES6</span>
-                                <span>iOS Glass</span>
+                                <span>Clean Layout</span>
                             </div>
-                            <div class="project-footer-note">
-                                <i class="fa-solid fa-laptop-code"></i> Modern UI engineering with custom particle interactions and glassmorphic panels.
-                            </div>
-                            <div class="project-actions">
-                                <a href="https://github.com/nadilrself-art/My-Website1" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                            <div class="project-footer">
+                                <p class="project-note"><i class="fa-solid fa-laptop-code"></i> Lightweight design focused on clean readability and direct information architecture.</p>
+                                <a href="https://github.com/nadilrself-art/My-Website1" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
                                     <i class="fa-brands fa-github"></i> Repository
                                 </a>
                             </div>
@@ -506,94 +500,81 @@
             </div>
         </section>
 
-        <!-- Contact Section (Nexiz Direct Command & Transmission Hub) -->
-        <section class="section contact" id="contact">
+        <!-- Contact Section -->
+        <section class="section" id="contact">
             <div class="container">
-                <div class="command-hub-card">
-                    <!-- Top Hub Status Bar -->
-                    <div class="hub-header">
-                        <div class="hub-title-group">
-                            <span class="hub-badge"><i class="fa-solid fa-satellite-dish"></i> DIRECT CHANNEL</span>
-                            <h2>Transmission & <span>Inquiries</span></h2>
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <div class="contact-title-group">
+                            <span class="section-tag"><i class="fa-solid fa-envelope"></i> Contact</span>
+                            <h2>Get in Touch</h2>
                             <p>Direct communication pipeline for Minecraft server engineering, network consulting, and staff administration.</p>
                         </div>
-                        <div class="hub-status-box">
-                            <div class="ping-indicator">
-                                <span class="ping-pulse"></span>
-                                <span>RESPONSE TIME: &lt; 2H</span>
-                            </div>
-                            <span class="hub-server-ref">NODE: CEYLON-HQ</span>
+                        <div class="response-badge">
+                            <span class="status-dot"></span>
+                            <span>Response Time: &lt; 2 Hours</span>
                         </div>
                     </div>
 
-                    <!-- Inner 2-Column Command Workspace -->
-                    <div class="hub-workspace">
-                        <!-- Left: Tactical Comms Matrix -->
-                        <div class="comms-matrix">
-                            <div class="matrix-heading">
-                                <i class="fa-solid fa-tower-broadcast text-red"></i>
-                                <h4>Available Frequency Channels</h4>
-                            </div>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <h3>Direct Channels</h3>
 
-                            <a href="mailto:nadilhavindu@gmail.com" class="comm-channel-tile">
-                                <div class="comm-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
-                                <div class="comm-meta">
-                                    <span class="channel-tag">DIRECT EMAIL</span>
-                                    <span class="channel-val">nadilhavindu@gmail.com</span>
+                            <a href="mailto:nadilhavindu@gmail.com" class="channel-card">
+                                <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="channel-content">
+                                    <span class="channel-label">Email</span>
+                                    <span class="channel-value">nadilhavindu@gmail.com</span>
                                 </div>
-                                <i class="fa-solid fa-chevron-right channel-arrow"></i>
+                                <i class="fa-solid fa-arrow-right channel-arrow"></i>
                             </a>
 
-                            <a href="https://ceylonesportsmc.xyz" target="_blank" rel="noopener noreferrer" class="comm-channel-tile">
-                                <div class="comm-icon-box"><i class="fa-solid fa-server"></i></div>
-                                <div class="comm-meta">
-                                    <span class="channel-tag">NETWORK PORTAL</span>
-                                    <span class="channel-val">ceylonesportsmc.xyz</span>
+                            <a href="https://ceylonesportsmc.xyz" target="_blank" rel="noopener noreferrer" class="channel-card">
+                                <div class="channel-icon"><i class="fa-solid fa-server"></i></div>
+                                <div class="channel-content">
+                                    <span class="channel-label">Network Portal</span>
+                                    <span class="channel-value">ceylonesportsmc.xyz</span>
                                 </div>
                                 <i class="fa-solid fa-arrow-up-right-from-square channel-arrow"></i>
                             </a>
 
-                            <div class="comm-channel-tile active-discord">
-                                <div class="comm-icon-box discord-box"><i class="fa-brands fa-discord"></i></div>
-                                <div class="comm-meta">
-                                    <span class="channel-tag">DISCORD HANDLE</span>
-                                    <span class="channel-val">Nexiz_v2</span>
+                            <div class="channel-card static">
+                                <div class="channel-icon discord"><i class="fa-brands fa-discord"></i></div>
+                                <div class="channel-content">
+                                    <span class="channel-label">Discord</span>
+                                    <span class="channel-value">Nexiz_v2</span>
                                 </div>
-                                <span class="tag-live">ONLINE</span>
+                                <span class="badge-status online">ONLINE</span>
                             </div>
 
-                            <div class="timezone-pill">
-                                <i class="fa-regular fa-clock text-red"></i>
+                            <div class="operating-hours">
+                                <i class="fa-regular fa-clock"></i>
                                 <span>Operating Hours: 09:00 - 23:00 (GMT+5:30)</span>
                             </div>
                         </div>
 
-                        <!-- Right: Command Dispatcher Form -->
-                        <div class="dispatcher-box">
-                            <form id="contactForm" class="dispatcher-form" onsubmit="event.preventDefault(); alert('Transmission dispatched to Nexiz_v2!');">
-                                <div class="dispatcher-header">
-                                    <i class="fa-solid fa-terminal text-red"></i>
-                                    <span>Dispatch Secure Message</span>
+                        <div class="contact-form-wrap">
+                            <form id="contactForm" class="contact-form" onsubmit="event.preventDefault(); alert('Message dispatched to Nexiz_v2! Thank you.');">
+                                <h3>Send a Message</h3>
+
+                                <div class="form-group">
+                                    <label for="userName">Name or Tag</label>
+                                    <input type="text" id="userName" placeholder="Your Name or In-game Tag" required autocomplete="off">
                                 </div>
 
-                                <div class="input-field-wrap">
-                                    <div class="field-icon"><i class="fa-solid fa-user"></i></div>
-                                    <input type="text" id="userName" placeholder="Your Name or Tag" required autocomplete="off">
+                                <div class="form-group">
+                                    <label for="userEmail">Email Address</label>
+                                    <input type="email" id="userEmail" placeholder="your@email.com" required autocomplete="off">
                                 </div>
 
-                                <div class="input-field-wrap">
-                                    <div class="field-icon"><i class="fa-solid fa-at"></i></div>
-                                    <input type="email" id="userEmail" placeholder="Your Email Address" required autocomplete="off">
-                                </div>
-
-                                <div class="input-field-wrap textarea-wrap">
-                                    <div class="field-icon"><i class="fa-solid fa-message"></i></div>
+                                <div class="form-group">
+                                    <label for="userMessage">Message</label>
                                     <textarea id="userMessage" rows="4" placeholder="Brief your project scope, server optimization request, or moderation query..." required></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-dispatch">
-                                    <span class="dispatch-text">DISPATCH TRANSMISSION</span>
-                                    <span class="dispatch-icon"><i class="fa-solid fa-bolt"></i></span>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <span>Send Message</span>
+                                    <i class="fa-solid fa-paper-plane"></i>
                                 </button>
                             </form>
                         </div>
