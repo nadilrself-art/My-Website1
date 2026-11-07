@@ -383,13 +383,9 @@
         <section class="status-hero">
             <div class="main-banner">
                 <div class="banner-pulse-dot" id="mainStatusDot"></div>
-                <h1 class="banner-title" id="mainStatusText">ALL SERVICES OPERATIONAL</h1>
+                <h1 class="banner-title" id="mainStatusText">All Projects Status</h1>
                 <p style="color: var(--text-secondary); font-size: 0.95rem;">Real-time telemetry and cluster health monitoring for CeylonEsports Infrastructure</p>
-                <div class="server-ip-copy" onclick="copyIp()" title="Click to copy Server IP">
-                    <i class="fa-solid fa-gamepad" style="color: var(--green);"></i>
-                    <span id="ipDisplay">play.ceylonesportsmc.xyz</span>
-                    <i class="fa-regular fa-copy" style="color: var(--text-secondary); font-size: 0.85rem;"></i>
-                </div>
+
             </div>
         </section>
 
@@ -552,7 +548,7 @@
                     if (data.version) {
                         document.getElementById('versionVal').textContent = `${data.software || 'Paper'} ${data.version}`;
                     }
-                    document.getElementById('mainStatusText').textContent = 'ALL SERVICES OPERATIONAL';
+                    // document.getElementById('mainStatusText').textContent = 'All Projects Status';
                 } else {
                     document.getElementById('statusVal').textContent = 'OFFLINE';
                     document.getElementById('statusVal').style.color = 'var(--red)';
