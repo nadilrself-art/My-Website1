@@ -439,10 +439,42 @@
             </div>
         </div>
 
-        <!-- Game Nodes Group -->
+        <!-- Game Modes Group -->
         <div class="status-group">
             <div class="group-header">
-                <div class="group-title"><i class="fa-solid fa-server" style="color: var(--green);"></i> Game Nodes & Clusters</div>
+                <div class="group-title"><i class="fa-solid fa-gamepad" style="color: var(--green);"></i> Game Modes & Arenas</div>
+                <div class="group-badge">ONLINE</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> Survival SMP (Custom Eco)</div>
+                <div class="uptime-bar" id="bar-survival"></div>
+                <div class="uptime-pct">99.94%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> BedWars (Solo / Doubles / 4v4)</div>
+                <div class="uptime-bar" id="bar-bedwars"></div>
+                <div class="uptime-pct">99.89%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> 1v1 Duels & Ranked Arena</div>
+                <div class="uptime-bar" id="bar-duels"></div>
+                <div class="uptime-pct">99.97%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> Parkour & Speedrun Maps</div>
+                <div class="uptime-bar" id="bar-parkour"></div>
+                <div class="uptime-pct">100.0%</div>
+            </div>
+        </div>
+
+        <!-- Infrastructure & Routing Group -->
+        <div class="status-group">
+            <div class="group-header">
+                <div class="group-title"><i class="fa-solid fa-server" style="color: var(--green);"></i> Infrastructure & Clusters</div>
                 <div class="group-badge">ONLINE</div>
             </div>
 
@@ -453,19 +485,7 @@
             </div>
 
             <div class="service-row">
-                <div class="service-name"><span class="service-dot"></span> Node-02 (Survival SMP)</div>
-                <div class="uptime-bar" id="bar5"></div>
-                <div class="uptime-pct">99.82%</div>
-            </div>
-
-            <div class="service-row">
-                <div class="service-name"><span class="service-dot"></span> Node-03 (Esports PvP Arena)</div>
-                <div class="uptime-bar" id="bar6"></div>
-                <div class="uptime-pct">99.90%</div>
-            </div>
-
-            <div class="service-row">
-                <div class="service-name"><span class="service-dot"></span> CoreProtect Anti-Grief Log</div>
+                <div class="service-name"><span class="service-dot"></span> CoreProtect Anti-Grief Engine</div>
                 <div class="uptime-bar" id="bar7"></div>
                 <div class="uptime-pct">100.0%</div>
             </div>
@@ -501,7 +521,7 @@
     <script>
         // Generate Uptime Bar Segment Indicators like Status Pages
         function populateUptimeBars() {
-            const barIds = ['bar1', 'bar2', 'bar3', 'bar4', 'bar5', 'bar6', 'bar7', 'bar8', 'bar9'];
+            const barIds = ['bar1', 'bar2', 'bar3', 'bar-survival', 'bar-bedwars', 'bar-duels', 'bar-parkour', 'bar4', 'bar7', 'bar8', 'bar9'];
             barIds.forEach(id => {
                 const container = document.getElementById(id);
                 if (!container) return;
