@@ -607,28 +607,33 @@
                         </div>
 
                         <div class="contact-form-wrap">
-                            <form id="contactForm" class="contact-form" onsubmit="event.preventDefault(); alert('Message dispatched to Nexiz_v2! Thank you.');">
+                            <form id="contactForm" class="contact-form" action="https://formsubmit.co/nexizv2dev@gmail.com" method="POST">
                                 <h3>Send a Message</h3>
+                                <!-- FormSubmit Configuration -->
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_subject" value="New Message from Portfolio Website (Nexiz_v2)">
+                                <input type="hidden" name="_template" value="table">
 
                                 <div class="form-group">
                                     <label for="userName">Name or Tag</label>
-                                    <input type="text" id="userName" placeholder="Your Name or In-game Tag" required autocomplete="off">
+                                    <input type="text" id="userName" name="name" placeholder="Your Name or In-game Tag" required autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="userEmail">Email Address</label>
-                                    <input type="email" id="userEmail" placeholder="your@email.com" required autocomplete="off">
+                                    <input type="email" id="userEmail" name="email" placeholder="your@email.com" required autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="userMessage">Message</label>
-                                    <textarea id="userMessage" rows="4" placeholder="Brief your project scope, server optimization request, or moderation query..." required></textarea>
+                                    <textarea id="userMessage" name="message" rows="4" placeholder="Brief your project scope, server optimization request, or moderation query..." required></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-block">
+                                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
                                     <span>Send Message</span>
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </button>
+                                <div id="formStatus" style="display:none; margin-top: 1rem; font-size: 0.9rem; text-align: center;"></div>
                             </form>
                         </div>
                     </div>

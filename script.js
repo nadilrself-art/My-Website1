@@ -192,4 +192,52 @@ document.addEventListener('DOMContentLoaded', () => {
         initNodes();
         render();
     }
+
+    // 5. AJAX Form Submission to Gmail via FormSubmit
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+            const originalBtnHtml = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending Message...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/nexizv2dev@gmail.com', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData))
+                });
+
+                if (response.ok) {
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = '#2ed573';
+                    formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent successfully to Nexiz_v2!';
+                    contactForm.reset();
+                } else {
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = '#e62828';
+                    formStatus.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Failed to send. Please email nexizv2dev@gmail.com directly.';
+                }
+            } catch (err) {
+                formStatus.style.display = 'block';
+                formStatus.style.color = '#e62828';
+                formStatus.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Error sending message. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 6000);
+            }
+        });
+    }
 });
