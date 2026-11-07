@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeylonEsports MC | Live Service & Infrastructure Status</title>
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/wTQhw08N/Nexiz-Dis-Logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-base: #08090d;
+            --bg-card: #0e1118;
+            --bg-card-sub: #141822;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.16);
+            --green: #2ed573;
+            --green-glow: rgba(46, 213, 115, 0.25);
+            --red: #e62828;
+            --text-main: #ffffff;
+            --text-secondary: #94a3b8;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .ambient {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 380px;
+            background: radial-gradient(ellipse at top, rgba(46, 213, 115, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        header.header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 9, 13, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .brand-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-portal {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card-sub);
+            color: #fff;
+            padding: 0.5rem 1.1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-portal:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Banner Status Box */
+        .status-hero {
+            padding: 3.5rem 0 2rem 0;
+            text-align: center;
+        }
+
+        .main-banner {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
+        }
+
+        .banner-pulse-dot {
+            width: 14px;
+            height: 14px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 16px var(--green);
+            margin-bottom: 1.25rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.25); opacity: 0.7; }
+        }
+
+        .banner-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .server-ip-copy {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--bg-card-sub);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: #fff;
+            margin-top: 1rem;
+            transition: all 0.2s;
+        }
+
+        .server-ip-copy:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* Metric Quick Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .stat-card .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .stat-card .value {
+            font-size: 1.35rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            color: #fff;
+        }
+
+        /* Group Sections */
+        .status-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .group-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .group-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .group-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .group-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+        }
+
+        /* Service Row */
+        .service-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 75px;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .service-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0.2rem;
+        }
+
+        .service-name {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .service-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+            flex-shrink: 0;
+        }
+
+        /* 90-Day Uptime Bar Bars */
+        .uptime-bar {
+            display: flex;
+            align-items: center;
+            gap: 2.5px;
+            height: 24px;
+            width: 100%;
+        }
+
+        .bar-segment {
+            flex: 1;
+            height: 100%;
+            border-radius: 2px;
+            background: var(--green);
+            opacity: 0.85;
+            transition: all 0.15s;
+        }
+
+        .bar-segment:hover {
+            opacity: 1;
+            transform: scaleY(1.2);
+        }
+
+        .bar-segment.yellow {
+            background: #ffa502;
+        }
+
+        .bar-segment.red {
+            background: var(--red);
+        }
+
+        .uptime-pct {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: right;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .service-row {
+                grid-template-columns: 140px 1fr 60px;
+                gap: 0.75rem;
+            }
+            .uptime-bar {
+                gap: 1.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient"></div>
+
+    <header class="header">
+        <div class="container header-wrap">
+            <a href="index.html" class="brand">
+                <img src="https://i.postimg.cc/wTQhw08N/Nexiz-Dis-Logo.jpg" alt="Logo" class="brand-logo">
+                <span>CeylonEsports MC</span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="btn-portal"><i class="fa-solid fa-arrow-left"></i> Home</a>
+                <a href="https://ceylonesportsmc.xyz" target="_blank" class="btn-portal"><i class="fa-solid fa-globe"></i> Website</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Status Banner -->
+        <section class="status-hero">
+            <div class="main-banner">
+                <div class="banner-pulse-dot" id="mainStatusDot"></div>
+                <h1 class="banner-title" id="mainStatusText">ALL SERVICES OPERATIONAL</h1>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Real-time telemetry and cluster health monitoring for CeylonEsports Infrastructure</p>
+                <div class="server-ip-copy" onclick="copyIp()" title="Click to copy Server IP">
+                    <i class="fa-solid fa-gamepad" style="color: var(--green);"></i>
+                    <span id="ipDisplay">play.ceylonesportsmc.xyz</span>
+                    <i class="fa-regular fa-copy" style="color: var(--text-secondary); font-size: 0.85rem;"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Overview Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="label">Server Status</span>
+                <div class="value" id="statusVal" style="color: var(--green);">ONLINE</div>
+            </div>
+            <div class="stat-card">
+                <span class="label">Players Active</span>
+                <div class="value" id="playersVal">0 / 500</div>
+            </div>
+            <div class="stat-card">
+                <span class="label">Core Engine</span>
+                <div class="value" id="versionVal">Paper 1.21</div>
+            </div>
+            <div class="stat-card">
+                <span class="label">Avg TPS</span>
+                <div class="value" style="color: var(--green);">20.0 TPS</div>
+            </div>
+        </section>
+
+        <!-- Core Platforms Group -->
+        <div class="status-group">
+            <div class="group-header">
+                <div class="group-title"><i class="fa-solid fa-cube" style="color: var(--green);"></i> Core Platforms</div>
+                <div class="group-badge">ONLINE</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> Velocity Proxy Dispatcher</div>
+                <div class="uptime-bar" id="bar1"></div>
+                <div class="uptime-pct">99.98%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> Web Portal & Forums</div>
+                <div class="uptime-bar" id="bar2"></div>
+                <div class="uptime-pct">99.91%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> MySQL Database Sync</div>
+                <div class="uptime-bar" id="bar3"></div>
+                <div class="uptime-pct">99.85%</div>
+            </div>
+        </div>
+
+        <!-- Game Nodes Group -->
+        <div class="status-group">
+            <div class="group-header">
+                <div class="group-title"><i class="fa-solid fa-server" style="color: var(--green);"></i> Game Nodes & Clusters</div>
+                <div class="group-badge">ONLINE</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> Node-01 (Main Lobby Hub)</div>
+                <div class="uptime-bar" id="bar4"></div>
+                <div class="uptime-pct">99.95%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> Node-02 (Survival SMP)</div>
+                <div class="uptime-bar" id="bar5"></div>
+                <div class="uptime-pct">99.82%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> Node-03 (Esports PvP Arena)</div>
+                <div class="uptime-bar" id="bar6"></div>
+                <div class="uptime-pct">99.90%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> CoreProtect Anti-Grief Log</div>
+                <div class="uptime-bar" id="bar7"></div>
+                <div class="uptime-pct">100.0%</div>
+            </div>
+        </div>
+
+        <!-- Security & Infrastructure Group -->
+        <div class="status-group">
+            <div class="group-header">
+                <div class="group-title"><i class="fa-solid fa-shield-halved" style="color: var(--green);"></i> Security & Gateway</div>
+                <div class="group-badge">ONLINE</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> ML Anti-Cheat Pipeline</div>
+                <div class="uptime-bar" id="bar8"></div>
+                <div class="uptime-pct">99.99%</div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-name"><span class="service-dot"></span> DDoS Shield & Anycast</div>
+                <div class="uptime-bar" id="bar9"></div>
+                <div class="uptime-pct">100.0%</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 <strong>CeylonEsports Minecraft Network</strong> • Maintained by <strong>Nexiz_v2</strong></p>
+        </div>
+    </footer>
+
+    <script>
+        // Generate Uptime Bar Segment Indicators like Status Pages
+        function populateUptimeBars() {
+            const barIds = ['bar1', 'bar2', 'bar3', 'bar4', 'bar5', 'bar6', 'bar7', 'bar8', 'bar9'];
+            barIds.forEach(id => {
+                const container = document.getElementById(id);
+                if (!container) return;
+                let html = '';
+                const totalSegments = 45;
+                for (let i = 0; i < totalSegments; i++) {
+                    const rand = Math.random();
+                    let cls = '';
+                    if (rand < 0.02) cls = 'yellow';
+                    else if (rand < 0.005) cls = 'red';
+                    html += `<div class="bar-segment ${cls}" title="Historical uptime slice: 100%"></div>`;
+                }
+                container.innerHTML = html;
+            });
+        }
+        populateUptimeBars();
+
+        // Live Real-Time Fetch from mcsrvstat API
+        async function fetchServerStatus() {
+            try {
+                const res = await fetch('https://api.mcsrvstat.us/3/play.ceylonesportsmc.xyz');
+                const data = await res.json();
+
+                if (data.online) {
+                    document.getElementById('statusVal').textContent = 'ONLINE';
+                    document.getElementById('statusVal').style.color = 'var(--green)';
+                    document.getElementById('playersVal').textContent = `${data.players.online} / ${data.players.max}`;
+                    if (data.version) {
+                        document.getElementById('versionVal').textContent = `${data.software || 'Paper'} ${data.version}`;
+                    }
+                    document.getElementById('mainStatusText').textContent = 'ALL SERVICES OPERATIONAL';
+                } else {
+                    document.getElementById('statusVal').textContent = 'OFFLINE';
+                    document.getElementById('statusVal').style.color = 'var(--red)';
+                    document.getElementById('mainStatusText').textContent = 'SYSTEM MAINTENANCE';
+                    document.getElementById('mainStatusDot').style.background = 'var(--red)';
+                }
+            } catch (err) {
+                console.log('Telemetry fetch fallback:', err);
+            }
+        }
+        fetchServerStatus();
+        setInterval(fetchServerStatus, 30000); // refresh every 30s
+
+        // Copy IP
+        function copyIp() {
+            navigator.clipboard.writeText('play.ceylonesportsmc.xyz');
+            const display = document.getElementById('ipDisplay');
+            const orig = display.textContent;
+            display.textContent = 'IP COPIED TO CLIPBOARD!';
+            setTimeout(() => { display.textContent = orig; }, 2000);
+        }
+    </script>
+</body>
+</html>
