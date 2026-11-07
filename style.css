@@ -1423,3 +1423,22 @@ body::before {
         gap: 1rem;
     }
 }
+
+/* Education Card School Thumbnail */
+.edu-thumb-wrap {
+    width: 68px;
+    height: 68px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    background: #000;
+}
+
+.edu-school-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
